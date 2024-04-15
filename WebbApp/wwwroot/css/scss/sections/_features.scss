@@ -1,0 +1,57 @@
+#features {
+    margin-top: 9rem;
+    background-color: $gray-200;
+
+    .container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 5rem 0;
+        height: max-content;
+
+        p {
+            width: 580px;
+            text-align: center;
+        }
+
+        .tool-features {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-template-rows: auto;
+
+            .box {
+                width: 432px;
+                height: max-content;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                padding: 2rem;
+
+                &:hover {
+                    background-color: white;
+                    transition-duration: 0.40s;
+                    cursor: pointer;
+                }
+
+                p {
+                    width: 350px;
+                }
+            }
+
+            #box1, #box2, #box3 {
+                border-right: solid 1px $gray-300;
+                border-bottom: solid 1px $gray-300;
+            }
+
+            #box4, #box5 {
+                border-right: solid 1px $gray-300;
+            }
+
+            #box3 {
+                border-right: none;
+            }
+        }
+    }
+}

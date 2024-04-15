@@ -1,0 +1,193 @@
+#signin {
+    margin-top: 30px;
+    height: 100%;
+    display: flex;
+
+    .container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100% !important;
+
+        .btn-theme-s {
+            border: none;
+        }
+
+        @include md {
+            width: 60% !important;
+        }
+
+        @include lg {
+            width: 60% !important;
+        }
+
+        @include xl {
+            width: 40% !important;
+        }
+
+        form {
+            padding: 1rem;
+            width: 100%;
+
+            h1 {
+            }
+
+            a {
+                text-decoration: none;
+            }
+
+            .content {
+                margin-top: 30px;
+                display: grid;
+                gap: 20px;
+                grid-template-columns: 1fr;
+                grid-template-areas: "email" "password" "remember" "button" "forgot" "hr" "external";
+
+
+                .input-group {
+                    border-radius: 0.25rem !important;
+
+                    label {
+                        padding: 3px;
+                    }
+                }
+
+                .checkbox-group {
+                    margin-top: 10px;
+                    margin-bottom: 30px;
+                    
+
+                    .input-group {
+                        display: flex;
+                        flex-direction: row;
+                        align-items: center;
+                        justify-content: flex-start;
+                        gap: 0.75rem;
+                    }
+                }
+
+
+                #form-email {
+                    grid-area: email;
+                }
+
+                #form-password {
+                    grid-area: password;
+                }
+
+                #form-remember {
+                    grid-area: remember;
+                    padding: 1rem 0;
+                }
+
+                #form-button {
+                    grid-area: button;
+                }
+
+                #forgot-password {
+                    grid-area: forgot;
+                    text-align: center;
+                    text-decoration: none;
+                    margin: 1rem 0 0 0;
+                }
+
+                hr {
+                    grid-area: hr;
+                }
+
+                #external-signin {
+                    grid-area: external;
+                    display: flex;
+                    justify-content: center;
+                    gap: 1rem;
+
+                    a {
+                        flex: 1;
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+
+/*
+#signin {
+    height: 100%;
+
+    .container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+
+        .btn-theme-s {
+            border: none;
+        }
+
+        @include md {
+            width: 60%;
+        }
+
+        @include lg {
+            width: 60%;
+        }
+
+        @include xl {
+            width: 40%;
+        }
+
+        form {
+            padding: 1rem;
+
+            .content {
+                display: grid;
+                gap: 0 2rem;
+                grid-template-columns: 1fr;
+                grid-template-areas: "email" "password" "remember" "button" "forgot" "hr" "external";
+
+
+
+                #form-email {
+                    grid-area: email;
+                }
+
+                #form-password {
+                    grid-area: password;
+                }
+
+                #form-remember {
+                    grid-area: remember;
+                    padding: 1rem 0;
+                }
+
+                #form-button {
+                    grid-area: button;
+                }
+
+                #forgot-password {
+                    grid-area: forgot;
+                    text-align: center;
+                    text-decoration: none;
+                    margin: 1rem 0 0 0;
+                }
+
+                hr {
+                    grid-area: hr;
+                }
+
+                #external-signin {
+                    grid-area: external;
+                    display: flex;
+                    justify-content: center;
+                    gap: 1rem;
+
+                    a {
+                        flex: 1;
+                    }
+                }
+            }
+        }
+    }
+}*/

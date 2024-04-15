@@ -1,0 +1,53 @@
+﻿@{
+    var user = await UserManager.GetUserAsync(User);
+    bool isRoot = Context.Request.Path.Value!.Equals("/");
+}
+
+<header>
+    <div class="container">
+       <a id="logo" asp-action="Home" asp-controller="Default">
+           <img src="images/logos/silicon_logo1_light.svg"/>
+       </a>
+
+       <nav>
+           <a asp-action="Home" asp-controller="Default" asp-fragment="showcase">Overview</a>
+           <a asp-action="Home" asp-controller="Default" asp-fragment="features">Features</a>
+            @if (SignInManager.IsSignedIn(User))
+            {
+                <a asp-action="Index" asp-controller="Courses">Courses</a>
+            }
+            <a asp-action="Home" asp-controller="Default">Contact</a>
+       </nav>
+
+
+        <div class="btn-switch">
+            <label>Light</label>
+            <label class="switch">
+                <input type="checkbox" id="switch-mode" @* checked="@isDarkMode" *@>
+                <span class="slider round"></span>
+            </label>
+            <label>Dark</label>
+        </div>
+
+        @if (SignInManager.IsSignedIn(User))
+        {
+            <div class="profile">
+                <div class="profile-image">
+                    <a asp-action="Details" asp-controller="Account">
+                        <img src="~/images/uploads/profiles/@user!.ProfileImage"/>
+                    </a>
+                </div>
+            </div>
+        }
+        else
+        {
+            <div class="account-buttons">
+                <a class="btn-gray btn" asp-action="SignIn" asp-controller="Auth"><i class="fa-solid fa-right-to-bracket"></i> Sign in</a>
+                <a class="btn-theme" asp-action="SignUp" asp-controller="Auth"><i class="fa-regular fa-user"></i> Sign up</a>
+            </div>
+
+        }
+
+
+    </div>
+</header>

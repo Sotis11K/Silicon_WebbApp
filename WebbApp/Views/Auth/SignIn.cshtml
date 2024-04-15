@@ -1,0 +1,55 @@
+﻿@model SignInViewModel
+@{
+    ViewData["Title"] = "Sign In";
+}
+
+<section id="signin">
+    <div class="container">
+
+
+        @if(!string.IsNullOrEmpty(ViewData["StatusMessage"]?.ToString()))
+        {
+            <div class="alert alert-danger">
+                @ViewData["StatusMessage"]
+            </div>
+        }
+
+
+        <form method="post" asp-action="SignIn" asp-controller="Auth" asp-route-ReturnUrl="@ViewData["ReturnUrl"]" novalidate>
+            <h1>Welcome Back</h1>
+            <p>Don't have an account yet?<a asp-controller="Auth" asp-action="SignUp"> Sign up here</a></p>
+            <div class="content">
+                <div id="form-email" class="input-group">
+                    <label asp-for="Email"></label>
+                    <input asp-for="Email"> 
+                </div>
+                <div id="form-password" class="input-group">
+                    <label asp-for="Password"></label>
+                    <input asp-for="Password">
+                </div>
+                <div id="form-remember" class="checkbox-group">
+                    <div class="input-group">
+                        <input asp-for="IsPresistent" />
+                        <label asp-for="IsPresistent"></label>
+                    </div>
+                </div>
+                <div id="form-button">
+                    <button class="btn-theme-s" type="submit"><i class="fa-solid fa-right-to-bracket"></i>Sign in</button>
+                </div>
+
+
+                <a id="forgot-password" asp-page="/forgot">Forgot your password?</a>
+
+                <hr>
+
+                <div id="external-signin">
+                    <a class="btn-gray"><i class="fa-brands fa-google"></i>Google</a>
+                    <a class="btn-gray"><i class="fa-brands fa-facebook-f"></i>Facebook</a>
+                </div>
+
+            </div>
+        </form>
+
+
+    </div>
+</section>

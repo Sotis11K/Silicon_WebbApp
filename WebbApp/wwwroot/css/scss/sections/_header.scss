@@ -1,0 +1,82 @@
+header {
+    padding: 15px 0;
+
+    .container {
+        display: grid;
+        align-items: center;
+        grid-template-columns: 1fr auto;
+        grid-template-areas: "logo mobile";
+        gap: 40px;
+
+        @include lg {
+            grid-template-columns: auto 1fr auto auto;
+            grid-template-areas: "logo menu switch buttons profile";
+        }
+
+        #logo {
+            grid-area: logo;
+        }
+
+        nav {
+            grid-area: menu;
+            display: flex;
+            flex-direction: row;
+            gap: 1rem;
+
+            a {
+                text-decoration: none;
+                color: $black;
+                font-weight: 700;
+            }
+        }
+
+        .btn-switch {
+            grid-area: switch;
+            display: none;
+
+            @include lg {
+                display: block;
+            }
+        }
+
+
+        .profile {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            .profile-image {
+                a {
+                    img {
+                        border-radius: 50%;
+                        width: 50px;
+                        height: 50px;
+                    }
+                }
+            }
+        }
+
+
+        .account-buttons {
+            grid-area: buttons;
+            display: none;
+            gap: 15px;
+
+            a {
+                text-decoration: none;
+            }
+
+            @include lg {
+                display: flex;
+            }
+        }
+
+        .btn-mobile {
+            grid-area: mobile;
+            display: block;
+
+            @include lg {
+                display: none;
+            }
+        }
+    }
+}

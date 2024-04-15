@@ -1,0 +1,143 @@
+.courses {
+    padding-top: 3rem;
+    padding-bottom: 5rem;
+
+    .container {
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+
+
+            h1 {
+            }
+
+            #form-filters {
+                display: flex;
+                justify-content: flex-end;
+                align-items: center;
+                gap: 1.5rem;
+
+                .select {
+                }
+
+                .input-search-group {
+                }
+            }
+        }
+
+
+        .course-items {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 2rem;
+
+            .course {
+                position: relative;
+                display: block;
+                border-radius: 8px;
+                overflow: hidden;
+                text-decoration: none;
+                box-shadow: 0 0 14px -4px $gray-500;
+                color: $gray-700;
+
+                &:hover {
+                    box-shadow: 0 0 14px -4px $gray-900;
+                }
+
+                .bestseller {
+                    position: absolute;
+                    top: 1rem;
+                    left: 1rem;
+                    background-color: $success;
+                    color: $white;
+                    padding: 4px 12px;
+                    border-radius: 4px;
+                }
+
+                .bookmark {
+                    position: absolute;
+                    top: 1rem;
+                    right: 1rem;
+                    z-index: 999;
+                    border: none;
+                    border-radius: 50%;
+                    padding: 0.75rem 1rem;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    &:hover{
+                        background-color: $gray-900;
+                        transition: 0.3s ease-in-out;
+                        i{
+                            color: $white;
+                        }
+                    }
+                }
+
+                img {
+                    width: 100%;
+                }
+
+                .content {
+                    padding: 1rem 2rem;
+
+                    .title {
+                        font-size: 20px;
+                        margin: 0.5rem 0;
+                    }
+
+                    .pricing {
+                        display: flex;
+                        gap: 1rem;
+                        font-size: 18px;
+                        font-weight: 600;
+
+                        .discount {
+                            color: $danger;
+                            font-size: 18px;
+                            font-weight: 600;
+                        }
+
+                        .original {
+                            color: $theme;
+                            font-size: 18px;
+                            font-weight: 600;
+                        }
+
+                        .discount-enabled {
+                            color: $gray-600;
+                            text-decoration: line-through;
+                            font-size: 18px;
+                            font-weight: 400;
+                        }
+                    }
+                }
+
+                .footer {
+                    color: $gray-600;
+                    border-top: 1px solid $gray-400;
+                    display: flex;
+                    margin-top: 1rem;
+                    padding-top: 1rem;
+                    gap: 2rem;
+
+
+                    .hours {
+                        i {
+                            margin-right: 5px;
+                        }
+                    }
+
+                    .likes {
+                        i {
+                            margin-right: 5px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

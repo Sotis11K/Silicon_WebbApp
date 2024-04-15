@@ -1,0 +1,82 @@
+#subscribe {
+    background-color: $gray-100;
+    padding: 4rem 0;
+
+
+    .container {
+        width: 55%;
+
+        .title {
+            display: flex;
+            align-items: center;
+            gap: 1.25rem;
+
+            h2 {
+                font-size: 2.5rem;
+                font-weight: 900;
+            }
+        }
+
+        form {
+            width: 100%;
+
+            .alternative {
+                margin: 2rem 0;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                .options {
+                    display: flex;
+                    flex-direction: row;
+                    gap: 0rem 1rem;
+                    width: 80%;
+                    flex-wrap: wrap;
+                    justify-content: flex-start;
+                    .checkbox-group{
+                        width: 25%;
+                        .input-group{
+                            display: flex;
+                            flex-direction: row;
+                            align-items: center;
+                            width: max-content;
+                            gap: 0.5rem;
+                        }
+                    }
+
+                }
+                h4{
+                    font-weight: 900;
+                    width: 20%;
+                }
+            }
+
+            .form-email {
+                display: flex;
+                align-items: center;
+                gap: 1.5rem;
+                height: max-content;
+
+                .input-group {
+                    position: relative;
+
+                    i {
+                        position: absolute;
+                        left: 20px;
+                        top: 12px;
+                        font-size: 1.3rem;
+                    }
+
+                    input {
+                        padding-left: 50px;
+                        height: 45px;
+                    }
+                }
+
+                button {
+                    width: 200px;
+                    height: 45px;
+                }
+            }
+        }
+    }
+}

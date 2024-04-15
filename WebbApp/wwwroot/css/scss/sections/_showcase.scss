@@ -1,0 +1,47 @@
+#showcase {
+    .background-image {
+        position: absolute;
+        right: 0;
+    }
+
+    .container {
+        padding: 100px 0;
+
+        .content {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+
+            #showcase-title {
+                width: 526px;
+                font-size: 60px;
+                font-weight: bold;
+                color: $gray-900;
+                text-shadow: 1px 1px 3px black;
+                line-height: 70px;
+            }
+
+            p {
+                width: 34%;
+                color: $gray-700;
+            }
+
+            a {
+                width: 210px;
+                height: 52px;
+                text-decoration: none;
+            }
+
+            h6 {
+                margin-top: 6rem;
+                color: $gray-900;
+                font-weight: bolder;
+            }
+
+            .brands {
+                display: flex;
+                gap: 1rem;
+            }
+        }
+    }
+}

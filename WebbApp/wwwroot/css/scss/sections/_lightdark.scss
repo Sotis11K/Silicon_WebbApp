@@ -1,0 +1,43 @@
+#lightdark {
+    position: relative;
+
+    .dark-bg {
+        z-index: -1;
+        background-color: $gray-900;
+        height: 100%;
+        width: 50vw;
+        top: 0;
+        bottom: 0;
+        position: absolute;
+    }
+
+    .container {
+        text-align: center;
+        padding: 3rem 0;
+
+        .title {
+            display: flex;
+            justify-content: center;
+            margin: 2rem 0;
+
+            h1 {
+                flex: 1;
+            }
+
+            .light {
+                text-align: right;
+                color: $gray-100;
+            }
+
+            .dark {
+                text-align: left;
+                margin-left: 50px;
+                color: $gray-900;
+            }
+
+        }
+
+        img {
+        }
+    }
+}
