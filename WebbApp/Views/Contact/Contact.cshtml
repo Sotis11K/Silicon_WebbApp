@@ -1,0 +1,44 @@
+﻿@using WebbApp.ViewModels
+@model ContactViewModel
+@{
+    ViewData["Title"] = "Contact";
+}
+
+
+<div class="container">
+    <form asp-controller="Contact" asp-action="Contact" method="post">
+
+        <div class="input-group">
+            <label asp-for="FullName"></label>
+            <input asp-for="FullName"/>
+        </div>
+
+        <div class="input-group">
+            <label asp-for="Email"></label>
+            <input asp-for="Email" />
+        </div>
+
+        <div class="input-group">
+            <label asp-for="Service"></label>
+            <select asp-for="Service">
+                <option value="NOVALUESELECTED">Select an option</option>
+                <option value="1">Option 1</option>
+                <option value="2">Option 2</option>
+                <option value="3">Option 3</option>
+                <option value="4">Option 4</option>
+                <option value="5">Option 5</option>
+            </select>
+        </div>
+
+        <div class="input-group">
+            <label asp-for="Message"></label>
+            <textarea asp-for="Message"></textarea>
+        </div>
+
+        
+
+
+        <button type="submit">Submit</button>
+    </form>
+</div>
+

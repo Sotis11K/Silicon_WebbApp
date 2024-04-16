@@ -20,16 +20,23 @@ public class DefaultController(HttpClient httpClient) : Controller
     {
         if(ModelState.IsValid)
         {
-            var content = new StringContent(JsonConvert.SerializeObject(model), Encoding.UTF8, "application/json");
-            var response = await _httpClient.PostAsync("https://localhost:7199/api/subscribe", content);
+            try
+            {
+                var content = new StringContent(JsonConvert.SerializeObject(model), Encoding.UTF8, "application/json");
+                var response = await _httpClient.PostAsync("https://localhost:7199/api/subscribe?key=ZWM5MTYxNmQtNzE0Mi00NDU3LTg4ZjgtYjIwYmFhODZkMjQ1", content);
 
-            if (response.IsSuccessStatusCode)
-            {
-                TempData["StatusMessage"] = "You are now subscribed";
+                if (response.IsSuccessStatusCode)
+                {
+                    TempData["StatusMessage"] = "You are now subscribed";
+                }
+                else if(response.StatusCode == System.Net.HttpStatusCode.Conflict)
+                {
+                    TempData["StatusMessage"] = "You are already subscribed";
+                }
             }
-            else if(response.StatusCode == System.Net.HttpStatusCode.Conflict)
+            catch
             {
-                TempData["StatusMessage"] = "You are already subscribed";
+                ViewData["StatusMessage"] = "Connection Failed";
             }
         }
         else

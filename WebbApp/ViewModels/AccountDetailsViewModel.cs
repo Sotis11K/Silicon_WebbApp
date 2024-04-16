@@ -2,6 +2,8 @@
 
 namespace WebbApp.ViewModels
 {
+
+
     public class AccountDetailsViewModel
     {
         public AccountBasicInfo? BasicInfo { get; set; } = new AccountBasicInfo();
