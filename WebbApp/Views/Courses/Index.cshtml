@@ -23,7 +23,7 @@
             @if(Model.Courses != null){
             @foreach(var course in Model.Courses)
             {
-                <a class="course" asp-action="Details" asp-controller="Courses" asp-route-id="@course.Id">
+                    <a class="course" asp-action="SingleCourse" asp-controller="Courses" asp-route-id="@course.Id">
                     @if (course.IsBestSeller)
                     {
                         <div class="bestseller">Best Seller</div>
@@ -57,4 +57,4 @@
         </div>
 
     </div>
-</section>
+</section> 

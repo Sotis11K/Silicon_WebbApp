@@ -1,9 +1,18 @@
 ﻿@{
     var user = await UserManager.GetUserAsync(User);
     bool isRoot = Context.Request.Path.Value!.Equals("/");
+
+
+
+    bool changeBackground = false;
+
+    if (Context.Request.Path.Value!.Equals("/contact"))
+    {
+        changeBackground = true;
+    }
 }
 
-<header>
+<header class="@(changeBackground ? "contact-background" : "")">
     <div class="container">
        <a id="logo" asp-action="Home" asp-controller="Default">
            <img src="images/logos/silicon_logo1_light.svg"/>
@@ -16,9 +25,9 @@
             {
                 <a asp-action="Index" asp-controller="Courses">Courses</a>
             }
-            <a asp-action="Home" asp-controller="Default">Contact</a>
+            <a asp-action="Contact" asp-controller="Contact">Contact</a>
        </nav>
-
+        
 
         <div class="btn-switch">
             <label>Light</label>
@@ -42,7 +51,7 @@
         else
         {
             <div class="account-buttons">
-                <a class="btn-gray btn" asp-action="SignIn" asp-controller="Auth"><i class="fa-solid fa-right-to-bracket"></i> Sign in</a>
+                <a class="btn-gray btn" asp-action="SignIn" asp-controller="Auth"><i class="fa-solid fa-left-to-bracket"></i> Sign in</a>
                 <a class="btn-theme" asp-action="SignUp" asp-controller="Auth"><i class="fa-regular fa-user"></i> Sign up</a>
             </div>
 

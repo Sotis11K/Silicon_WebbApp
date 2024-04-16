@@ -1390,3 +1390,214 @@ footer .container .social-media a {
 footer .container .hide-social-media {
   display: none;
 }
+
+body, html {
+  height: 100%;
+  margin: 0;
+}
+
+#single-course .header-background-image {
+  background-image: url("../../../images/courses/course_1.svg");
+}
+#single-course .header-background-image img {
+  background-position: bottom;
+  background-repeat: repeat;
+  background-size: cover;
+  width: 100%;
+  height: 40%;
+}
+#single-course .container .course-header {
+  background-color: #0B0F19;
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  color: #D4D7E5;
+}
+#single-course .container .course-header .course-header-information .course-header-title {
+  font-weight: 900;
+}
+#single-course .container .course-header .course-header-information .course-header-info {
+  display: flex;
+  gap: 2rem;
+  color: white;
+  margin-top: 3rem;
+}
+#single-course .container .course-header .course-header-information .course-header-info .reviews {
+  display: flex;
+  align-items: center;
+  gap: 0.2rem;
+  border-right: solid 1px;
+  padding: 0 2rem 0 0;
+}
+#single-course .container .course-header .course-header-information .course-header-info .reviews i {
+  color: yellow;
+}
+#single-course .container .course-header .course-header-information .course-header-info .reviews i:nth-last-child(1) {
+  color: gray;
+}
+#single-course .container .course-header .course-header-information .course-header-info .likes {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 2rem 0 0;
+  gap: 0.3rem;
+  border-right: solid 1px;
+}
+#single-course .container .course-header .course-header-information .course-header-info .hours {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.3rem;
+}
+#single-course .container .course-header .course-header-information .header-author-info {
+  display: flex;
+  height: 100px;
+  justify-content: flex-start;
+  align-items: center;
+  margin-top: 6rem;
+  gap: 1rem;
+}
+#single-course .container .course-header .course-header-information .header-author-info .img-container {
+  height: 60px;
+  width: 60px;
+}
+#single-course .container .course-header .course-header-information .header-author-info .img-container img {
+  height: 100%;
+  width: 100%;
+  border-radius: 50%;
+}
+#single-course .container .course-header .course-header-information .header-author-info .text-container {
+  height: 60px;
+  display: flex;
+  justify-content: space-around;
+  flex-direction: column;
+}
+#single-course .container .course-header .course-header-information .header-author-info .text-container span {
+  font-weight: 600;
+}
+#single-course .container .course-header .course-header-information .header-author-info .text-container span:nth-last-child(2) {
+  font-weight: 700;
+}
+
+.contact-background {
+  background-color: #EFF2FC;
+}
+
+#contact {
+  height: max-content;
+  background-color: #EFF2FC;
+}
+#contact .container .information {
+  margin-top: 3rem;
+}
+#contact .container .information .navigation {
+  display: flex;
+  margin-bottom: 2rem;
+  gap: 1rem;
+}
+#contact .container .information .navigation a {
+  text-decoration: none;
+  color: #9397AD;
+}
+#contact .container .information .navigation a:nth-last-child(1) {
+  color: #6366F1;
+}
+#contact .container .information .navigation span {
+  letter-spacing: -5px;
+  margin-right: 0.2rem;
+}
+#contact .container .contact-us {
+  display: flex;
+  flex-direction: column;
+}
+#contact .container .contact-us h2 {
+  font-weight: 900;
+}
+#contact .container .contact-us .contact-us-box {
+  display: flex;
+  margin-top: 3rem;
+  gap: 1.75rem;
+}
+#contact .container .contact-us .contact-us-box .contact-us-logo {
+  margin-top: 1.5rem;
+  width: max-content;
+  z-index: 99;
+  text-align: left;
+}
+#contact .container .contact-us .contact-us-box .contact-us-logo i {
+  color: #6366F1;
+  background-color: white;
+  border-radius: 50%;
+  padding: 0.75rem;
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+#contact .container .contact-us .contact-us-box .contact-us-text {
+  margin-top: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+  gap: 1rem;
+}
+#contact .container .contact-us .contact-us-box .contact-us-text h3 {
+  margin: 0;
+  font-weight: 900;
+}
+#contact .container .contact-us .contact-us-box .contact-us-text p {
+  margin: 0;
+  font-weight: 300;
+}
+#contact .container .contact-us .contact-us-box .contact-us-text a {
+  margin-top: 1rem;
+  font-weight: 500;
+  color: #6366F1;
+  width: max-content;
+}
+#contact .container .contact-us .contact-us-box .contact-us-text a:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+#contact .container .form-container {
+  z-index: 999;
+  position: absolute;
+  right: 15%;
+  padding: 3.5rem;
+  background-color: white;
+  width: max-content;
+  top: 15%;
+  display: flex;
+  flex-direction: column;
+  border-radius: 0.25rem;
+  box-shadow: 0 0 7px -4px black;
+  justify-content: start;
+  align-items: start;
+}
+#contact .container .form-container form {
+  width: max-content;
+  display: flex;
+  gap: 1.5rem;
+  flex-direction: column;
+}
+#contact .container .form-container form h2 {
+  width: 492px;
+  font-weight: 900;
+  margin-bottom: 1rem;
+}
+#contact .container .form-container form .input-group label {
+  font-weight: 600;
+}
+#contact .container .form-container form .input-group textarea {
+  height: 180px;
+}
+#contact .container .form-container form button {
+  width: 246px;
+}
+#contact .address {
+  margin-top: 10rem;
+  width: 100%;
+  height: 80vh;
+}
+#contact .address iframe {
+  width: 100%;
+  height: 100%;
+}

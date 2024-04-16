@@ -1,0 +1,142 @@
+body, html {
+    height: 100%;
+    margin: 0;
+}
+
+#single-course {
+    .header-background-image {
+        background-image: url("../../../images/courses/course_1.svg");
+
+
+        img {
+            background-position: bottom;
+            background-repeat:repeat;
+            background-size: cover;
+            width: 100%;
+            height: 40%;
+        }
+    }
+
+
+    .header-background-image-cover {
+    }
+
+
+
+
+
+    .container {
+        .course-header {
+            background-color: $gray-900;
+            display: flex;
+            flex-direction: column;
+            gap: 3rem;
+            color: $gray-400;
+
+            .navigation {
+                a {
+                }
+            }
+
+            .course-header-information {
+                span {
+                }
+
+
+                .course-header-title {
+                    font-weight: 900;
+                }
+
+                .course-header-description {
+                }
+
+                .course-header-info {
+                    display: flex;
+                    gap: 2rem;
+                    color: white;
+                    margin-top: 3rem;
+
+                    .reviews {
+                        display: flex;
+                        align-items: center;
+                        gap: 0.2rem;
+                        border-right: solid 1px;
+                        padding: 0 2rem 0 0;
+
+                        i {
+                            color: yellow;
+                        }
+
+                        i:nth-last-child(1) {
+                            color: gray;
+                        }
+                    }
+
+                    .likes {
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        padding: 0 2rem 0 0;
+                        gap: 0.3rem;
+                        border-right: solid 1px;
+
+                        i {
+                        }
+
+                        p {
+                        }
+                    }
+
+                    .hours {
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        gap: 0.3rem;
+
+                        i {
+                        }
+
+                        span {
+                        }
+                    }
+                }
+
+
+                .header-author-info {
+                    display: flex;
+                    height: 100px;
+                    justify-content: flex-start;
+                    align-items: center;
+                    margin-top: 6rem;
+                    gap: 1rem;
+
+                    .img-container {
+                        height: 60px;
+                        width: 60px;
+
+                        img {
+                            height: 100%;
+                            width: 100%;
+                            border-radius: 50%;
+                        }
+                    }
+
+                    .text-container {
+                        height: 60px;
+                        display: flex;
+                        justify-content: space-around;
+                        flex-direction: column;
+
+                        span {
+                            font-weight: 600;
+                        }
+
+                        span:nth-last-child(2) {
+                            font-weight: 700;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
