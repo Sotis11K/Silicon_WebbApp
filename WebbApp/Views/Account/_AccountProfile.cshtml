@@ -1,4 +1,7 @@
 ﻿
+
+
+
 @{
     var user = await UserManager.GetUserAsync(User);
 }
@@ -16,10 +19,12 @@
     <h5>@($"{Model.BasicInfo.FirstName} {Model.BasicInfo.LastName}")</h5>
     <p>@Model.BasicInfo.Email</p>
     <nav>
-        <a class="btn-theme-s" asp-page="/Details"><i class="fa-solid fa-gear"></i>Account Details</a>
-        <a class="btn-transparent" asp-page="/Security"><i class="fa-solid fa-lock"></i>Security</a>
-        <a class="btn-transparent" asp-page="/SavedCourses"><i class="fa-regular fa-bookmark"></i>Saved Courses</a>
+        <a class="btn-theme-s" asp-action="Details" asp-controller="Account"><i class="fa-solid fa-gear"></i>Account Details</a>
+        <a class="btn-theme-s" asp-action="Security" asp-controller="Account"><i class="fa-regular fa-lock"></i>Account Security</a>
+        <a class="btn-transparent" asp-action="SavedCourses" asp-controller="Account"><i class="fa-regular fa-bookmark"></i>Saved Courses</a>
         <a class="btn-transparent" asp-action="signout" asp-controller="Auth"><i class="fa-solid fa-arrow-right-from-bracket"></i>Sign Out</a>
+
+
     </nav>
 
 }

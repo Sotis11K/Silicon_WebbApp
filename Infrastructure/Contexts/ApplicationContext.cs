@@ -8,5 +8,7 @@ public class ApplicationContext(DbContextOptions<ApplicationContext> options) : 
 {
     public DbSet<AddressEntity> Addresses { get; set; }
     public DbSet<ContactEntity> Contacts { get; set; }
+    public DbSet<SavedCourseEntity> SavedCourses { get; set; }
+
 
 }

@@ -1,3 +1,10 @@
+
+
+
+
+
+
+
 function formErrorHandler(element, validationResult) {
     let spanElement = document.querySelector(`[data-valmsg-for="${element.name}"]`);
 
@@ -81,6 +88,47 @@ function checkboxValidator(element) {
 
 
 
+// Loop through all forms on the page
+let forms = document.querySelectorAll('form');
+
+forms.forEach(form => {
+    // Get all input elements within the current form
+    let inputs = form.querySelectorAll('input');
+
+    inputs.forEach(input => {
+        // Check if input requires validation
+        if (input.dataset.val === 'true') {
+            if (input.type === 'checkbox') {
+                input.addEventListener('change', (e) => {
+                    checkboxValidator(e.target);
+                });
+            } else {
+                input.addEventListener('keyup', (e) => {
+                    switch (e.target.type) {
+                        case 'text':
+                            textValidator(e.target);
+                            break;
+                        case 'email':
+                            emailValidator(e.target);
+                            break;
+                        case 'password':
+                            passwordlValidator(e.target);
+                            break;
+                    }
+                });
+            }
+        }
+    });
+});
+
+
+
+
+
+
+
+
+/*
 let forms = document.querySelectorAll('form')
 let inputs = forms[0].querySelectorAll('input')
 
@@ -113,3 +161,5 @@ inputs.forEach(input => {
 
     }
 })
+
+            */
