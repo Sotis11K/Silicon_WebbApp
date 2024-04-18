@@ -35,35 +35,14 @@
             <div class="course-items">
                 @foreach(var course in Model.Courses)
                 {
-                    <div class="course" @*onclick="window.location.href='@Url.Action("SingleCourse", "Courses", new {id = course.Id})'"*@>
+                    <div class="course" onclick="window.location.href='@Url.Action("SingleCourse", "Courses", new {id = @course.Id})'">
 
                         @if (course.IsBestSeller)
                         {
                             <div class="bestseller">Best Seller</div>
                         }
-
-
-
-
-                        @*<a class="btn-circle bookmark" asp-controller="Courses" asp-action="SaveCourse"><i class="fa-regular fa-bookmark"></i></a>*@
-
-
-                        <button class="btn-circle bookmark save-course"  onclick="saveCourse(@course.Id)" @*href="javascript:void(0)"*@><i class="fa-regular fa-bookmark"></i></button>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+                        <a class="btn-circle bookmark" asp-controller="Courses" asp-action="SaveCourse"><i class="fa-regular fa-bookmark"></i></a>
+                        <button class="btn-circle bookmark save-course"  onclick="saveCourse(@course.Id)"><i class="fa-regular fa-bookmark"></i></button>
                         <img src="~/images/courses/@course.Image" alt="@course.Title"/>
                         <div class="content">
                             <h5 class="title">@course.Title</h5>
@@ -83,12 +62,10 @@
                                     <i class="fa-regular fa-thumbs-up"></i> @course.LikesInProcent (@course.LikesInNumbers)
                                 </div>
                             </div>
-
                         </div>
                     </div>
                 }
             </div>
-
 
             @if(Model.Pagination != null && Model.Pagination.TotalPages > 1)
             {
@@ -106,19 +83,7 @@
                         }
                 </div>
             }
-
-
-
         }
-
-
-
-
-
-
-
-
-
         <div class="work-with-us">
             <div class="work-with-us-text">
                 <span>Ready to get started?</span>

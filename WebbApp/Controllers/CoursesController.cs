@@ -47,32 +47,11 @@ public class CoursesController(CategoryService categoryService, CourseService co
     [Route("/Courses/SingleCourse/{id}")]
     public async Task<IActionResult> SingleCourse(int id)
     {
-        // You may need to adjust the URL to match your API endpoint
         var response = await _httpClient.GetAsync($"https://localhost:7199/api/courses/{id}?key=ZWM5MTYxNmQtNzE0Mi00NDU3LTg4ZjgtYjIwYmFhODZkMjQ1");
         if (response.IsSuccessStatusCode)
         {
             var courseViewModel = JsonConvert.DeserializeObject<CourseViewModel>(await response.Content.ReadAsStringAsync());
 
-            // Redirect to a new action method that will display the details for the course
-            return RedirectToAction("CourseDetails", new { id = id });
-        }
-        else
-        {
-            return NotFound();
-        }
-    }
-
-    // New action method to display course details
-    [Route("/Courses/CourseDetails/{id}")]
-    public async Task<IActionResult> CourseDetails(int id)
-    {
-        // Retrieve course details based on the ID
-        var response = await _httpClient.GetAsync($"https://localhost:7199/api/courses/{id}?key=ZWM5MTYxNmQtNzE0Mi00NDU3LTg4ZjgtYjIwYmFhODZkMjQ1");
-        if (response.IsSuccessStatusCode)
-        {
-            var courseViewModel = JsonConvert.DeserializeObject<CourseViewModel>(await response.Content.ReadAsStringAsync());
-
-            // Pass the course details to the view
             return View(courseViewModel);
         }
         else
@@ -80,6 +59,9 @@ public class CoursesController(CategoryService categoryService, CourseService co
             return NotFound();
         }
     }
+
+
+
 
 
 
@@ -98,7 +80,22 @@ public class CoursesController(CategoryService categoryService, CourseService co
         {
             return NotFound();
         }
-    }*/
+    }
+    */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -111,13 +108,18 @@ public class CoursesController(CategoryService categoryService, CourseService co
     }*/
 
 
-    public IActionResult SaveCourse(int id, string returnUrl)
+    /*public async IActionResult SaveCourse(int id, string returnUrl)
     {
-        // Save the course logic here...
+        var url = $"https://localhost:7199/api/courses/{id}?key=ZWM5MTYxNmQtNzE0Mi00NDU3LTg4ZjgtYjIwYmFhODZkMjQ1";
+        var request = new HttpRequestMessage(HttpMethod.Post, url);
+        var response = await httpClient.SendAsync(request);
+        string message = "";
 
-        // Redirect back to the original page
-        return Redirect(returnUrl);
-    }
+        if (response.IsSuccessStatusCode)
+        {
+            if(response.StatusCode)
+        }
+    }*/
 
 
 
