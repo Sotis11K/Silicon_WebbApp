@@ -1,0 +1,37 @@
+﻿@model AccountSecurityViewModel
+@{
+    ViewData["Title"] = "Account Security";
+}
+
+<section id="security">
+    <div class="container">
+        <h1>Account Security</h1>
+        @if (!string.IsNullOrEmpty(ViewData["StatusMessage"]?.ToString()))
+        {
+            <div class="alert alert-danger">
+                @ViewData["StatusMessage"]
+            </div>
+        }
+        <form method="post" asp-action="ChangePassword" asp-controller="Account">
+            <div class="input-group">
+                <label for="currentPassword">Current Password</label>
+                <input type="password" id="currentPassword" name="CurrentPassword" required>
+                <span asp-validation-for="CurrentPassword" class="text-danger"></span>
+            </div>
+            <div class="input-group">
+                <label for="newPassword">New Password</label>
+                <input type="password" id="newPassword" name="NewPassword" required>
+                <span asp-validation-for="NewPassword" class="text-danger"></span>
+            </div>
+            <div class="input-group">
+                <label for="confirmPassword">Confirm New Password</label>
+                <input type="password" id="confirmPassword" name="ConfirmPassword" required>
+                <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+            </div>
+            <button type="submit" class="btn-theme">Update Password</button>
+        </form>
+    </div>
+</section>
+
+
+

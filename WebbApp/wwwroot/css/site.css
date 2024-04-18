@@ -1074,6 +1074,33 @@ header .container .btn-mobile {
   align-items: center;
   gap: 1.5rem;
 }
+.courses .container .header #form-filters .select {
+  position: relative;
+  min-width: 300px;
+}
+.courses .container .header #form-filters .select .selected {
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  border: 1px solid #D4D7E5;
+  cursor: pointer;
+}
+.courses .container .header #form-filters .select .select-options {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background-color: #FFFFFF;
+  border: solid 1px #D4D7E5;
+  z-index: 9999;
+}
+.courses .container .header #form-filters .select .select-options .option {
+  padding: 10px;
+  cursor: pointer;
+}
+.courses .container .header #form-filters .select .select-options .option:hover {
+  background-color: #D4D7E5;
+}
 .courses .container .course-items {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
@@ -1164,6 +1191,42 @@ header .container .btn-mobile {
 }
 .courses .container .course-items .course .footer .likes i {
   margin-right: 5px;
+}
+.courses .container .work-with-us {
+  background-color: #EFF2FC;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 2rem 0;
+}
+.courses .container .work-with-us .work-with-us-text {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+.courses .container .work-with-us .work-with-us-text span {
+  font-size: 1.25rem;
+  font-weight: 400;
+}
+.courses .container .work-with-us .work-with-us-text #skills-text {
+  width: 350px;
+  font-size: 2rem;
+  font-weight: bold;
+}
+.courses .container .work-with-us .work-with-us-text #skills-text span {
+  font-size: 1.875rem;
+  font-weight: bold;
+  color: #6366F1;
+}
+.courses .container .work-with-us .work-with-us-text a {
+  width: 162px;
+  text-decoration: none;
+}
+.courses .container .work-with-us .work-with-us-text a:hover {
+  text-decoration: underline;
+}
+.courses .container .work-with-us img {
+  height: 100%;
 }
 
 #download-app {

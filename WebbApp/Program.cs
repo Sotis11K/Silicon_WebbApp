@@ -34,6 +34,11 @@ builder.Services.ConfigureApplicationCookie(x =>
 // Add the following line for ContactService registration
 builder.Services.AddScoped<IContactService, ContactServices>();
 
+builder.Services.AddScoped<CategoryService>();
+builder.Services.AddScoped<CourseService>();
+
+
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -44,6 +49,9 @@ if (!app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();
+app.UseStatusCodePagesWithReExecute("/Error/{0}");
+
+
 
 app.UseRouting();
 

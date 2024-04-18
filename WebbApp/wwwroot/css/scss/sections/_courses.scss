@@ -21,6 +21,36 @@
                 gap: 1.5rem;
 
                 .select {
+                    position: relative;
+                    min-width: 300px;
+
+                    .selected{
+                        padding: 0.5rem 1rem;
+                        border-radius: 0.5rem;
+                        border: 1px solid $gray-400;
+                        cursor: pointer
+                    }
+
+                    .select-options{
+                        display: none;
+                        position: absolute;
+                        top: 100%;
+                        left: 0;
+                        right: 0;
+                        background-color: $white;
+                        border: solid 1px $gray-400;
+                        z-index: 9999;
+
+
+                        .option{
+                            padding: 10px;
+                            cursor: pointer;
+                        }
+
+                        .option:hover{
+                            background-color: $gray-400;
+                        }
+                    }
                 }
 
                 .input-search-group {
@@ -68,10 +98,12 @@
                     display: flex;
                     justify-content: center;
                     align-items: center;
-                    &:hover{
+
+                    &:hover {
                         background-color: $gray-900;
                         transition: 0.3s ease-in-out;
-                        i{
+
+                        i {
                             color: $white;
                         }
                     }
@@ -137,6 +169,48 @@
                         }
                     }
                 }
+            }
+        }
+
+        .work-with-us {
+            background-color: $gray-200;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            padding: 2rem 0;
+
+            .work-with-us-text {
+                display: flex;
+                flex-direction: column;
+                gap: 1.5rem;
+                span {
+                    font-size: 1.25rem;
+                    font-weight: 400;
+                }
+
+                #skills-text {
+                    width: 350px;
+                    font-size: 2rem;
+                    font-weight: bold;
+
+                    span {
+                        font-size: 1.875rem;
+                        font-weight: bold;
+                        color: $theme;
+                    }
+                }
+
+                a {
+                    width: 162px;
+                    text-decoration: none;
+                    &:hover{
+                        text-decoration: underline;
+                    }
+                }
+            }
+
+            img {
+                height: 100%;
             }
         }
     }
