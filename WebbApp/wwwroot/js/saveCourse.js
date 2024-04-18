@@ -1,4 +1,4 @@
-
+/*
 function saveCourse(courseId) {
     var returnUrl = window.location.pathname;
     fetch(`/Account/SaveCourse?id=${courseId}&returnUrl=${encodeURIComponent(returnUrl)}`)
@@ -10,3 +10,20 @@ function saveCourse(courseId) {
 }
 
 
+*/
+
+
+
+
+function saveCourse(id){
+
+    fetch(`/account/savedcourses?id=${id}`)
+        .then(res => {
+            if (res.ok)
+                window.location.reload();
+            else
+                console.log("something went wrong :(")
+        })
+
+  
+}

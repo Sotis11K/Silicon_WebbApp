@@ -1,7 +1,9 @@
+
 #signin {
-    margin-top: 30px;
+    padding-top: 2rem;
     height: 100%;
     display: flex;
+    background-color: var(--color-gray-000);
 
     .container {
         display: flex;
@@ -30,10 +32,16 @@
             width: 100%;
 
             h1 {
+                color: var(--color-gray-900);
             }
 
-            a {
+            p {
+                color: var(--color-gray-900);
+            }
+
+            p {
                 text-decoration: none;
+                color: var(--color-gray-900);
             }
 
             .content {
@@ -55,7 +63,7 @@
                 .checkbox-group {
                     margin-top: 10px;
                     margin-bottom: 30px;
-                    
+
 
                     .input-group {
                         display: flex;
@@ -69,15 +77,41 @@
 
                 #form-email {
                     grid-area: email;
+                    background-color: var(--color-gray-000);
+                    color: var(--color-gray-900);
+
+                    input {
+                        background-color: var(--color-gray-000);
+                        color: var(--color-gray-900);
+                        border: solid 1px var(--color-gray-100);
+                    }
+
+                    &::placeholder {
+                        color: var(--color-gray-900);
+                    }
                 }
 
                 #form-password {
                     grid-area: password;
+                    background-color: var(--color-gray-000);
+                    color: var(--color-gray-900);
+
+                    input {
+                        background-color: var(--color-gray-000);
+                        color: var(--color-gray-900);
+                        border: solid 1px var(--color-gray-100);
+                    }
+
+                    &::placeholder {
+                        color: var(--color-gray-200);
+                    }
                 }
 
                 #form-remember {
                     grid-area: remember;
                     padding: 1rem 0;
+                    background-color: var(--color-gray-000);
+                    color: var(--color-gray-900);
                 }
 
                 #form-button {
@@ -89,6 +123,7 @@
                     text-align: center;
                     text-decoration: none;
                     margin: 1rem 0 0 0;
+                    background-color: var(--color-gray-000)
                 }
 
                 hr {
@@ -101,93 +136,20 @@
                     justify-content: center;
                     gap: 1rem;
 
-                    a {
+                    .btn-gray {
+                        background-color: var(--color-gray-100);
+                        color: var(--color-gray-900);
                         flex: 1;
+                        text-decoration: none;
+
+                        &:hover {
+                            cursor: pointer;
+                            background-color: var(--color-gray-600);
+                            color: var(--color-gray-000);
+                        }
                     }
                 }
             }
         }
     }
 }
-
-
-
-/*
-#signin {
-    height: 100%;
-
-    .container {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 100%;
-
-        .btn-theme-s {
-            border: none;
-        }
-
-        @include md {
-            width: 60%;
-        }
-
-        @include lg {
-            width: 60%;
-        }
-
-        @include xl {
-            width: 40%;
-        }
-
-        form {
-            padding: 1rem;
-
-            .content {
-                display: grid;
-                gap: 0 2rem;
-                grid-template-columns: 1fr;
-                grid-template-areas: "email" "password" "remember" "button" "forgot" "hr" "external";
-
-
-
-                #form-email {
-                    grid-area: email;
-                }
-
-                #form-password {
-                    grid-area: password;
-                }
-
-                #form-remember {
-                    grid-area: remember;
-                    padding: 1rem 0;
-                }
-
-                #form-button {
-                    grid-area: button;
-                }
-
-                #forgot-password {
-                    grid-area: forgot;
-                    text-align: center;
-                    text-decoration: none;
-                    margin: 1rem 0 0 0;
-                }
-
-                hr {
-                    grid-area: hr;
-                }
-
-                #external-signin {
-                    grid-area: external;
-                    display: flex;
-                    justify-content: center;
-                    gap: 1rem;
-
-                    a {
-                        flex: 1;
-                    }
-                }
-            }
-        }
-    }
-}*/

@@ -4,6 +4,7 @@
     .container {
         display: grid;
         text-align: center;
+        place-items: center;
 
         .title {
             width: 60%;
@@ -11,24 +12,38 @@
             margin-right: auto;
             margin: 4rem;
             margin-bottom: 4rem;
+            color: var(--color-gray-900);
+            @include lg{
+                p{
+                    margin-top: 2rem;
+                }
+            }
         }
 
         .tools {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
             gap: 50px;
+            color: var(--color-gray-900);
+
+            @include lg {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
             .tool {
                 text-align: left;
                 padding: 1rem;
                 padding: 2rem;
                 transition: 0.2s ease-in-out;
+
                 img {
+                    margin-bottom: 1rem;
                 }
 
                 p {
                 }
 
-                &:hover{
+                &:hover {
                     box-shadow: 0 0 14px -4px rgba(0,0,0,0.4);
                 }
             }

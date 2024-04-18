@@ -1,7 +1,7 @@
 #subscribe {
-    background-color: $gray-100;
+    background-color: var(--color-gray-100);
     padding: 4rem 0;
-
+    color: var(--color-gray-900);
 
     .container {
         width: 55%;
@@ -25,6 +25,13 @@
                 display: flex;
                 align-items: center;
                 justify-content: center;
+
+                @include xxl {
+                    flex-direction: column;
+                    align-items: flex-start;
+                    gap: 2rem;
+                }
+
                 .options {
                     display: flex;
                     flex-direction: row;
@@ -32,9 +39,16 @@
                     width: 80%;
                     flex-wrap: wrap;
                     justify-content: flex-start;
-                    .checkbox-group{
+
+                    @include xxl {
+                        flex-direction: column;
+                        gap: 0.5rem;
+                    }
+
+                    .checkbox-group {
                         width: 25%;
-                        .input-group{
+
+                        .input-group {
                             display: flex;
                             flex-direction: row;
                             align-items: center;
@@ -42,11 +56,15 @@
                             gap: 0.5rem;
                         }
                     }
-
                 }
-                h4{
+
+                h4 {
                     font-weight: 900;
                     width: 20%;
+
+                    @include xxl {
+                        width: max-content;
+                    }
                 }
             }
 
@@ -55,6 +73,10 @@
                 align-items: center;
                 gap: 1.5rem;
                 height: max-content;
+
+                @include md {
+                    flex-direction: column;
+                }
 
                 .input-group {
                     position: relative;

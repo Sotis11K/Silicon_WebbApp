@@ -1,14 +1,33 @@
 #lightdark {
     position: relative;
 
-    .dark-bg {
+    .dark-bg-light {
         z-index: -1;
-        background-color: $gray-900;
+        background-color: var(--color-gray-900);
         height: 100%;
         width: 50vw;
         top: 0;
         bottom: 0;
         position: absolute;
+
+        @include xl {
+            width: 50%;
+        }
+    }
+
+    .dark-bg-dark {
+        z-index: -1;
+        background-color: var(--color-gray-900);
+        height: 100%;
+        width: 50%;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        position: absolute;
+
+        @include xl {
+            width: 50%;
+        }
     }
 
     .container {
@@ -20,24 +39,36 @@
             justify-content: center;
             margin: 2rem 0;
 
-            h1 {
-                flex: 1;
-            }
 
             .light {
                 text-align: right;
                 color: $gray-100;
+
+                @include xl {
+                    margin-right: 4rem;
+                }
             }
 
             .dark {
+                color: $gray-900;
                 text-align: left;
                 margin-left: 50px;
-                color: $gray-900;
+
+                @include xl {
+                    margin-left: 4rem;
+                }
             }
 
+
+            h1 {
+                flex: 1;
+            }
         }
 
         img {
+            @include lg {
+                display: none;
+            }
         }
     }
 }

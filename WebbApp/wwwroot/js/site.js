@@ -15,3 +15,22 @@ function handleProfileImageUpload() {
     }
     catch {}
 }
+
+
+
+function headerDropdown() {
+    console.log("nope")
+    document.querySelector(".dropdown").style.display = "block"
+}
+
+
+window.onclick = function (event) {
+    if (!event.target.matches('#dropdown-activate')) {
+        var dropdowns = document.getElementsByClassName("dropdown");
+        var i;
+        for (i = 0; i < dropdowns.length; i++) {
+            var openDropdown = dropdowns[i];
+            openDropdown.style.display = "none"
+        }
+    }
+}

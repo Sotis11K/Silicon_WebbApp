@@ -65,6 +65,14 @@ public class CoursesController(CategoryService categoryService, CourseService co
 
 
 
+
+
+
+
+
+
+
+
     /*
     [Route("/Courses/SingleCourse")]
     public async Task<IActionResult> SingleCourse(int id)
@@ -96,30 +104,6 @@ public class CoursesController(CategoryService categoryService, CourseService co
 
 
 
-
-
-
-    /*public async Task<IActionResult> SaveCourse(int id)
-    {
-        var response = await _httpClient.GetAsync($"https://localhost:7199/api/courses/{id}?key=ZWM5MTYxNmQtNzE0Mi00NDU3LTg4ZjgtYjIwYmFhODZkMjQ1");
-
-        return RedirectToAction("Index", "Courses");
-
-    }*/
-
-
-    /*public async IActionResult SaveCourse(int id, string returnUrl)
-    {
-        var url = $"https://localhost:7199/api/courses/{id}?key=ZWM5MTYxNmQtNzE0Mi00NDU3LTg4ZjgtYjIwYmFhODZkMjQ1";
-        var request = new HttpRequestMessage(HttpMethod.Post, url);
-        var response = await httpClient.SendAsync(request);
-        string message = "";
-
-        if (response.IsSuccessStatusCode)
-        {
-            if(response.StatusCode)
-        }
-    }*/
 
 
 

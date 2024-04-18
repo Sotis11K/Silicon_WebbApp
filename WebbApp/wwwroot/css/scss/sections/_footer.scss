@@ -1,21 +1,25 @@
 footer {
     padding: 50px 0 30px 0;
     @include text-m;
-    color: $gray-600;
+    color: var(--color-gray-600);
+    background-color: var(--color-gray-000);
 
     .container {
         text-align: center;
+
         .social-media {
             display: flex;
             justify-content: center;
             align-items: center;
             gap: 20px;
             margin-bottom: 30px;
-            a{
+
+            a {
                 text-decoration: none;
             }
         }
-        .hide-social-media{
+
+        .hide-social-media {
             display: none;
         }
     }
