@@ -1,8 +1,14 @@
 ﻿@{
     ViewData["Title"] = "404";
+
+    var themeMode = Context.Request.Cookies["ThemeMode"] ?? "light";
+    var isDark = (themeMode == "dark") ? true : false;
+
 }
 
-
-<h3>works?</h3>
-
-<h1>404 btw</h1>
+<section id="error404">
+    <img src="~/images/other/@(isDark ? "error404-dark.svg" : "error404-light.svg")"/>
+    <h2>Ooops!</h2>
+    <span>The page you are looking for is not available</span>
+    <a class="btn-theme" asp-controller="Default" asp-action="Home">Go to homepage</a>
+</section>

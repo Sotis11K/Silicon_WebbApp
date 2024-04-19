@@ -1,197 +1,207 @@
-﻿
-
+﻿@model SingleCourseViewModel
 @{
     ViewData["Title"] = "Single Course";
 }
 
 
-<img id="imgsmall" src="~/images/courses/course_1.svg" />
-<img id="imgbig" src="~/images/courses/course_1_big.png" />
-<div id="imgdiv"></div>
 
 
-@*
+
 <section id="single-course">
 
-    <div class="header-background-image"></div>
-    <div class="header-background-image-cover"></div>
 
 
+    <div class="singlecourse-header">
+        <div class="header-background-image">
+            <img  src="~/images/courses/@Model.BigImage" />
+        <div class="header-background-image-cover"></div>
+        </div>
 
 
+        <div class="container">
+
+
+            <div class="course-header">
+
+                <div class="navigation">
+                    <a asp-controller="Default" asp-action="Home">Home</a>
+                    <span>>></span>
+                    <a asp-controller="Courses" asp-action="Index">Courses</a>
+                    <span>>></span>
+                    <a>@Model.Title</a>
+                </div>
+
+                <div class="course-header-information">
+                    @if(Model.IsBestSeller == true)
+                    {
+                        <span class="bestseller">Best Seller</span>
+                    }
+
+                    <h2 class="course-header-title">@Model.Title</h2>
+                    <p class="course-header-description">Egestas feugiat lorem eu neque suspendisse ullamcorper scelerisque aliquam mauris.</p>
+                    <div class="course-header-info">
+                        <div class="reviews">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i id="last-star" class="fa-regular fa-star"></i>
+                            <span> (@Model.LikesInNumbers reviews)</span>
+                        </div>
+                        <div class="likes">
+                            <i class="fa-regular fa-thumbs-up"></i>
+                            <span> 5K likes</span>
+                        </div>
+
+                        <div class="hours">
+                            <i class="fa-regular fa-clock"></i>
+                            <span>@Model.Hours hours</span>
+                        </div>
+
+                    </div>
+
+
+                    <div class="header-author-info">
+                        <div class="img-container">
+                            <img src="~/images/other/author-image.svg" />
+                        </div>
+                        <div class="text-container">
+                            <span>Created By</span>
+                            <span>@Model.Author</span>
+                        </div>
+                    </div>
+
+
+                </div>
+
+
+            </div>
+        </div> 
+    </div>
 
     <div class="container">
-        <div class="course-header">
+        <div class="course-information">
 
-            <div class="navigation">
-                <a>Home</a>
-                <span>>></span>
-                <a>Courses</a>
-                <span>>></span>
-                <a>@Model.Title</a>
+            <div class="course-text-description">
+                <div class="course-description">
+                    <h2>Course Description</h2>
+                    <p>Suspendisse natoque sagittis, consequat turpis. Sed tristique tellus morbi magna. At vel senectus accumsan, arcu mattis id tempor. Tellus sagittis, euismod porttitor sed tortor est id. Feugiat velit velit, tortor ut. Ut libero cursus nibh lorem urna amet tristique leo. Viverra lorem arcu nam nunc at ipsum quam. A proin id sagittis dignissim mauris condimentum ornare. Tempus mauris sed dictum ultrices.</p>
+                </div>
+                <div class="what-youll-learn">
+                    <h3>What you'll learn</h3>
+                    <div>
+                        <p><i class="fa-regular fa-circle-check"></i>Powerful project management</p>
+                        <p><i class="fa-regular fa-circle-check"></i>Transparent work management</p>
+                        <p><i class="fa-regular fa-circle-check"></i>Manage work & focus on the most important tasks</p>
+                        <p><i class="fa-regular fa-circle-check"></i>Track your progress with interactive charts</p>
+                        <p><i class="fa-regular fa-circle-check"></i>Easiest way to track time spent on tasks</p>
+                    </div>
+                </div>
             </div>
+            <div class="course-join">
+                <h4>This course includes</h4>
+                <p><i class="fa-solid fa-tv"></i> @Model.Hours hours on-demand video</p>
+                <p><i class="fa-solid fa-file"></i> 18 artickles</p>
+                <p><i class="fa-solid fa-download"></i> 25 downloadable resources</p>
+                <p><i class="fa-solid fa-infinity"></i> Full lifetime access</p>
+                <p><i class="fa-solid fa-trophy"></i> Certificate of completion</p>
 
-            <div class="course-header-information">
-                @if(Model.IsBestSeller == true)
+                @if (!string.IsNullOrEmpty(Model.DiscountPrice))
                 {
-                    <span>Best Seller</span>
+                    <div class="prices">
+                        <span class="price">@Model.DiscountPrice</span>
+                        <span class="striked-price">@Model.Price</span>
+                    </div>
+                }
+                else
+                {
+                    <span class="price">@Model.Price</span>
                 }
 
-                <h2 class="course-header-title">@Model.Title</h2>
-                <p class="course-header-description">Egestas feugiat lorem eu neque suspendisse ullamcorper scelerisque aliquam mauris.</p>
-                <div class="course-header-info">
-                    <div class="reviews">
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-regular fa-star"></i>
-                        <span> (@Model.LikesInNumbers reviews)</span>
-                    </div>
-                    <div class="likes">
-                        <i class="fa-regular fa-thumbs-up"></i>
-                        <span> 5K likes</span>
-                    </div>
-
-                    <div class="hours">
-                        <i class="fa-regular fa-clock"></i>
-                        <span>@Model.Hours hours</span>
-                    </div>
-
-                </div>
-
-
-                <div class="header-author-info">
-                    <div class="img-container">
-                        <img src="~/images/other/author-image.svg" />
-                    </div>
-                    <div class="text-container">
-                        <span>Created By</span>
-                        <span>@Model.Author</span>
-                    </div>
-                </div>
-
+                <button class="btn-theme">Join course</button>
 
             </div>
+        </div>
 
+
+
+        <div class="program-details">
+            <h2>Program Details</h2>
+
+            <div class="program-details-box">
+                <span>1</span>
+                <div class="program-details-text">
+                    <h3>Introductiong. Getting started</h3>
+                    <p>Nulla faucibus mauris pellentesque blandit faucibus non. Sit ut et at suspendisse gravida hendrerit tempus placerat.</p>
+                </div>
+            </div>
+
+            <div class="program-details-box">
+                <span>2</span>
+                <div class="program-details-text">
+                    <h3>The ultimate HTML developer: advanced HTML</h3>
+                    <p>Lobortis diam elit id nibh ultrices sed penatibus donec. Nibh iaculis eu sit cras ultricies. Nam eu eget etiam egestas donec scelerisque ut ac enim. Vitae ac nisl, enim nec accumsan vitae est.</p>
+                </div>
+            </div>
+
+            <div class="program-details-box">
+                <span>3</span>
+                <div class="program-details-text">
+                    <h3>CSS & CSS3: basic</h3>
+                    <p>Duis euismod enim, facilisis risus tellus pharetra lectus diam neque. Nec ultrices mi faucibus est. Magna ullamcorper potenti elementum ultricies auctor nec volutpat augue.</p>
+                </div>
+            </div>
+
+            <div class="program-details-box">
+                <span>4</span>
+                <div class="program-details-text">
+                    <h3>JavaScript basics for beginners</h3>
+                    <p>Morbi porttitor risus imperdiet a, nisl mattis. Amet, faucibus eget in platea vitae, velit, erat eget velit. At lacus ut proin erat.</p>
+                </div>
+            </div>
+
+            <div class="program-details-box">
+                <span>5</span>
+                <div class="program-details-text">
+                    <h3>Understanding APIs</h3>
+                    <p>Risus morbi euismod in congue scelerisque fusce pellentesque diam consequat. Nisi mauris nibh sed est morbi amet arcu urna. Malesuada feugiat quisque consectetur elementum diam vitae. Dictumst facilisis odio eu quis maecenas risus odio fames bibendum.</p>
+                </div>
+            </div>
+
+            <div class="program-details-box">
+                <span>6</span>
+                <div class="program-details-text">
+                    <h3>C# and .NET from beginner to advanced</h3>
+                    <p>Quis risus quisque diam diam. Volutpat neque eget eu faucibus sed urna fermentum risus. Est, mauris morbi nibh massa.</p>
+                </div>
+            </div>
 
         </div>
-    </div> 
+
+
+
+
+        <div class="about-author">
+            <img id="author-img"  src="~/images/other/author-image.svg" />
+            <div class="author-information-box">
+                <div class="author-information">
+                    <span>Learn from the best</span>
+                    <h2>@Model.Author</h2>
+                    <p>Dolor ipsum amet cursus quisque porta adipiscing. Lorem convallis malesuada sed maecenas. Ac dui at vitae mauris cursus in nullam porta sem. Quis pellentesque elementum ac bibendum. Nunc aliquam in tortor facilisis. Vulputate eget risus, metus phasellus. Pellentesque faucibus amet, eleifend diam quam condimentum convallis ultricies placerat. Duis habitasse placerat amet, odio pellentesque rhoncus, feugiat at. Eget pellentesque tristique felis magna fringilla.</p>
+                    <div class="socials">
+                        <a><i class="fa-brands fa-youtube"></i> 240k subscribers</a>
+                        <a><i class="fa-brands fa-square-facebook"></i> 180k followers</a>
+                    </div>
+                </div>
+            </div>
+            <img id="author-pattern" src="~/images/other/author-pattern.svg" />
+        </div>
+
+
+    </div>
+
+
+
+
+
 </section>
-
-    
-
-
-
-
-
-
-
-
-
-
-
-
-*@
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-@* <div>
-    <h2>Course Id: @Model.Id</h2>
-    <h2>Course Title: @Model.Title</h2>
-
-</div> *@

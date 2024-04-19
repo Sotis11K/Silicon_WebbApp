@@ -4,16 +4,21 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Newtonsoft.Json;
+using System.Net.Http;
 using System.Security.Claims;
 using WebbApp.ViewModels;
 
 namespace WebbApp.Controllers;
 [Authorize]
-public class AccountController(UserManager<UserEntity> userManager, ApplicationContext context) : Controller
+public class AccountController(UserManager<UserEntity> userManager, ApplicationContext context, HttpClient httpClient) : Controller
 {
 
     private readonly UserManager<UserEntity> _userManager = userManager;
+
     private readonly ApplicationContext _context = context;
+    private readonly HttpClient _httpClient = httpClient;
+
 
     public async Task<IActionResult> Details()
     {
@@ -197,19 +202,39 @@ public class AccountController(UserManager<UserEntity> userManager, ApplicationC
         return true;
     }
 
-
+    
     public async Task<IActionResult> SavedCourses(int id)
     {
         // Retrieve the course details based on the provided ID
-        var course = await _context.Courses.FindAsync(id);
+        var response = await _httpClient.GetAsync($"https://localhost:7199/api/courses/{id}?key=ZWM5MTYxNmQtNzE0Mi00NDU3LTg4ZjgtYjIwYmFhODZkMjQ1");
 
-        if (course == null)
+        if (response.IsSuccessStatusCode)
         {
-            return NotFound(); // If the course is not found, return a 404 Not Found response
+            var jsonContent = await response.Content.ReadAsStringAsync();
+
+            var savedCourse = JsonConvert.DeserializeObject<SavedCourseEntity>(jsonContent);
+
+            // Add the saved course to the database
+            _context.SavedCourses.Add(savedCourse);
+            await _context.SaveChangesAsync();
+
+            return Ok();
+        }
+        else
+        {
+            return NotFound();
         }
 
-        // Pass the course details to the view
-        return View(course);
+    }
+
+    [HttpGet]
+    public async Task<IActionResult> SavedCoursesContent()
+    {
+        // Retrieve saved courses from the database
+        var savedCourses = await _context.SavedCourses.ToListAsync();
+
+        // Pass the saved courses to the view
+        return View(savedCourses);
     }
 }
 

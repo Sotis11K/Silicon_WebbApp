@@ -17,7 +17,6 @@ public class CourseService(HttpClient http, IConfiguration configuration)
 
 
 
-
         if (response.IsSuccessStatusCode)
         {
             var result = JsonConvert.DeserializeObject<CourseResult>(await response.Content.ReadAsStringAsync());

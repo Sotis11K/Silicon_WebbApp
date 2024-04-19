@@ -112,13 +112,13 @@
                     input {
                         background-color: var(--color-gray-000);
                         color: var(--color-gray-900);
-                       
+
 
                         &::placeholder {
                             color: var(--color-gray-900);
                         }
 
-                        &:selected{
+                        &:selected {
                             border: solid 1px var(--color-gray-000);
                         }
                     }
@@ -131,6 +131,8 @@
             display: grid;
             grid-template-columns: 1fr 1fr 1fr;
             gap: 2rem;
+
+
 
             .course {
                 position: relative;
