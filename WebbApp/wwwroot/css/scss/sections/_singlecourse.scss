@@ -2,146 +2,466 @@
 
 
 
-/*body, html {
+body, html {
     height: 100%;
     margin: 0;
 }
 
 #single-course {
-    .header-background-image {
-        background-image: url("../../../images/courses/course_1.svg");
+    background-color: var(--color-gray-000);
 
+    .singlecourse-header {
+        position: relative;
+        padding: 2rem 0rem;
 
-        img {
-            background-position: bottom;
-            background-repeat:repeat;
-            background-size: cover;
+        .header-background-image {
+            position: absolute;
             width: 100%;
-            height: 40%;
+            height: 100%;
+
+
+            img {
+                width: 100%;
+                height: 100%;
+            }
+
+            .header-background-image-cover {
+                top: 0;
+                width: 100%;
+                height: 100%;
+                background-color: $gray-900;
+                opacity: 0.5;
+                position: absolute;
+            }
+        }
+
+
+
+        .container {
+            position: relative;
+
+            .course-header {
+                margin-top: 2rem;
+                z-index: 200;
+                display: flex;
+                flex-direction: column;
+                gap: 3rem;
+                z-index: 30;
+
+                @include lg {
+                    margin-top: 1rem;
+                }
+
+
+                .navigation {
+                    margin-bottom: 2rem;
+
+                    @include lg {
+                        margin-bottom: 0rem;
+                    }
+
+                    a {
+                        color: white;
+                        text-decoration: none;
+                        &:hover{
+                            opacity: 0.7;
+                            text-decoration: underline;
+                        }
+                    }
+
+                    span {
+                        color: white;
+                        letter-spacing: -4px;
+                        margin-right: 10px;
+                        margin-left: 5px;
+                    }
+                }
+
+                .course-header-information {
+                    .bestseller {
+                        background-color: $success;
+                        padding: 0.2rem 0.5rem;
+                        border-radius: 0.25rem;
+                        color: white;
+                        font-size: 0.8rem;
+                    }
+
+
+                    .course-header-title {
+                        margin-top: 0.7rem;
+                        font-weight: 900;
+                        color: white;
+                    }
+
+                    .course-header-description {
+                        color: white;
+                        opacity: 0.8;
+                    }
+
+                    .course-header-info {
+                        display: flex;
+                        gap: 2rem;
+                        color: white;
+                        margin-top: 3rem;
+
+                        .reviews {
+                            display: flex;
+                            align-items: center;
+                            gap: 0.2rem;
+                            border-right: 1px solid rgba(255, 255, 255, 0.8);
+                            padding: 0 2rem 0 0;
+
+                            i {
+                                color: yellow;
+                            }
+
+                            #last-star {
+                                color: white;
+                                opacity: 0.8;
+                            }
+                        }
+
+                        .likes {
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            padding: 0 2rem 0 0;
+                            gap: 0.3rem;
+                            border-right: 1px solid rgba(255, 255, 255, 0.8);
+
+                            i {
+                            }
+
+                            span {
+                                color: white;
+                                opacity: 0.8;
+                            }
+                        }
+
+                        .hours {
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            gap: 0.3rem;
+
+                            i {
+                            }
+
+                            span {
+                                color: white;
+                                opacity: 0.8;
+                            }
+                        }
+                    }
+
+
+                    .header-author-info {
+                        display: flex;
+                        height: 100px;
+                        justify-content: flex-start;
+                        align-items: center;
+                        margin-top: 9rem;
+                        gap: 1rem;
+                        color: white;
+
+                        @include lg {
+                            margin-top: 5rem;
+                        }
+
+                        @include md {
+                            margin-top: 1rem;
+                        }
+
+                        .img-container {
+                            height: 60px;
+                            width: 60px;
+
+
+                            img {
+                                height: 100%;
+                                width: 100%;
+                                border-radius: 50%;
+                            }
+                        }
+
+                        .text-container {
+                            height: 60px;
+                            display: flex;
+                            justify-content: space-around;
+                            flex-direction: column;
+
+                            span {
+                                font-weight: 600;
+                            }
+
+                            span:nth-last-child(2) {
+                                font-weight: 700;
+                            }
+                        }
+                    }
+                }
+            }
         }
     }
 
 
-    .header-background-image-cover {
-    }
 
+    .course-information {
+        display: flex;
+        justify-content: space-between;
+        padding-top: 6rem;
+        color: var(--color-gray-900);
 
-
-
-
-    .container {
-        .course-header {
-            background-color: $gray-900;
-            display: flex;
+        @include xl {
             flex-direction: column;
-            gap: 3rem;
-            color: $gray-400;
+        }
 
-            .navigation {
-                a {
+
+
+        .course-text-description {
+            position: relative;
+
+            .course-description {
+                width: 746px;
+
+                h2 {
+                    font-weight: 900;
+                    margin-bottom: 2rem;
+                }
+
+                p {
                 }
             }
 
-            .course-header-information {
-                span {
-                }
+
+            .what-youll-learn {
+                margin-top: 3rem;
 
 
-                .course-header-title {
+
+                h3 {
+                    margin-bottom: 1.75rem;
                     font-weight: 900;
                 }
 
-                .course-header-description {
+                div {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 0.5rem;
+
+                    p {
+                        margin: 0;
+
+                        i {
+                            color: $theme;
+                            margin-right: 5px;
+                        }
+                    }
+                }
+            }
+        }
+
+        .course-join {
+            background-color: var(--color-gray-100);
+            display: flex;
+            flex-direction: column;
+            width: 416px;
+            border: solid 1px var(--color-gray-200);
+            height: max-content;
+            gap: 0.25rem;
+            border-radius: 0.5rem;
+            padding: 2rem;
+            box-shadow: 0 0 5px -3px black;
+
+            @include xl {
+                margin-top: 3rem;
+            }
+
+
+            h4 {
+                font-weight: 900;
+                margin-bottom: 1.5rem;
+                font-size: 1.25rem;
+            }
+
+            p {
+                color: var(--color-gray-800);
+            }
+
+            button {
+                margin-top: 1rem;
+                width: 155px;
+                padding: 0.5rem 0rem;
+            }
+
+            .prices {
+                margin-top: 1.75rem;
+
+                .price {
+                    font-weight: 900;
+                    font-size: 2.25rem;
                 }
 
-                .course-header-info {
-                    display: flex;
-                    gap: 2rem;
+                .striked-price {
+                    text-decoration: line-through;
+                    opacity: 0.6;
+                    font-size: 2rem;
+                    margin-left: 0.5rem;
+                }
+            }
+
+            .price {
+                margin-top: 1.75rem;
+                font-weight: 800;
+                font-size: 2.25rem;
+            }
+        }
+    }
+
+
+    .program-details {
+        margin-top: 3rem;
+        display: flex;
+        flex-direction: column;
+        gap: 3rem;
+        color: var(--color-gray-900);
+
+        h2 {
+            font-weight: 900;
+            margin-bottom: 3rem;
+        }
+
+
+        .program-details-box {
+            display: flex;
+            flex-direction: row;
+            gap: 2rem;
+
+            span {
+                background-color: var(--color-gray-000);
+                border-radius: 50%;
+                padding: 1.5rem;
+                height: 50px;
+                width: 50px;
+                border: solid 15px var(--color-gray-200);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-weight: 700;
+                font-size: 1.25rem;
+            }
+
+            .program-details-text {
+                h3 {
+                    font-weight: 700;
+                }
+
+                p {
+                    width: 600px;
+                }
+            }
+        }
+    }
+
+
+    .about-author {
+        margin-top: 5rem;
+        margin-bottom: 5rem;
+        background-color: $gray-900;
+        display: flex;
+        position: relative;
+
+        @include lg {
+            flex-direction: column;
+        }
+
+        .author-information-box {
+            display: flex;
+            justify-content: center;
+            align-self: center;
+            height: 100%;
+
+
+
+            .author-information {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-self: center;
+                width: 75%;
+                gap: 1rem;
+
+
+
+                @include lg {
+                    width: 100%;
+                    margin-top: 2rem;
+                }
+
+                @include md {
+                    margin-left: auto;
+                    margin-right: auto;
+                }
+
+                span {
                     color: white;
-                    margin-top: 3rem;
-
-                    .reviews {
-                        display: flex;
-                        align-items: center;
-                        gap: 0.2rem;
-                        border-right: solid 1px;
-                        padding: 0 2rem 0 0;
-
-                        i {
-                            color: yellow;
-                        }
-
-                        i:nth-last-child(1) {
-                            color: gray;
-                        }
-                    }
-
-                    .likes {
-                        display: flex;
-                        align-items: center;
-                        justify-content: center;
-                        padding: 0 2rem 0 0;
-                        gap: 0.3rem;
-                        border-right: solid 1px;
-
-                        i {
-                        }
-
-                        p {
-                        }
-                    }
-
-                    .hours {
-                        display: flex;
-                        align-items: center;
-                        justify-content: center;
-                        gap: 0.3rem;
-
-                        i {
-                        }
-
-                        span {
-                        }
-                    }
+                    opacity: 0.75;
                 }
 
+                h2 {
+                    color: white;
+                    font-weight: 700;
+                }
 
-                .header-author-info {
-                    display: flex;
-                    height: 100px;
-                    justify-content: flex-start;
-                    align-items: center;
-                    margin-top: 6rem;
-                    gap: 1rem;
+                p {
+                    color: white;
+                    opacity: 0.75;
+                    margin-bottom: 2rem;
+                }
 
-                    .img-container {
-                        height: 60px;
-                        width: 60px;
+                .socials {
 
-                        img {
-                            height: 100%;
-                            width: 100%;
-                            border-radius: 50%;
-                        }
-                    }
-
-                    .text-container {
-                        height: 60px;
+                    @include xl {
                         display: flex;
-                        justify-content: space-around;
                         flex-direction: column;
+                        gap: 1rem;
+                    }
 
-                        span {
-                            font-weight: 600;
+                    a {
+                        background-color: red;
+                        color: white;
+                        border-radius: 0.5rem;
+                        padding: 0.75rem 1.5rem;
+
+                        i {
+                            margin-right: 0.5rem;
                         }
+                    }
 
-                        span:nth-last-child(2) {
-                            font-weight: 700;
+                    a:nth-child(2) {
+                        background-color: blue;
+                        margin-left: 1rem;
+
+                        @include xl {
+                            margin-left: 0;
                         }
                     }
                 }
+            }
+        }
+
+        #author-img {
+            z-index: 1;
+        }
+
+        #author-pattern {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+
+            @include lg {
+                display: none;
             }
         }
     }
 }
-*/

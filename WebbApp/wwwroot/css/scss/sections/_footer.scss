@@ -3,6 +3,8 @@ footer {
     @include text-m;
     color: var(--color-gray-600);
     background-color: var(--color-gray-000);
+    bottom: 0;
+
 
     .container {
         text-align: center;
@@ -23,4 +25,9 @@ footer {
             display: none;
         }
     }
+}
+
+
+.hide-footer{
+    display: none;
 }

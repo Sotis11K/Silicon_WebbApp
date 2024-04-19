@@ -7,18 +7,21 @@ using WebbApp.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.EntityFrameworkCore;
 using System;
+using static System.Net.WebRequestMethods;
+using Microsoft.Extensions.Configuration;
 
 namespace WebbApp.Controllers;
 [Authorize]
 
-public class CoursesController(CategoryService categoryService, CourseService courseService, HttpClient httpClient) : Controller
+public class CoursesController(CategoryService categoryService, CourseService courseService, HttpClient httpClient, IConfiguration configuration) : Controller
 {
     private readonly CategoryService _categoryService = categoryService;
     private readonly CourseService _courseService = courseService;
-    
+    private readonly IConfiguration _configuration = configuration;
+
+
     private readonly HttpClient _httpClient = httpClient;
 
-    //[Route("/courses")]
     public async Task<IActionResult> Index(string category = "", string searchQuery = "", int pageNumber = 1, int pageSize = 6)
     {
 
@@ -43,68 +46,47 @@ public class CoursesController(CategoryService categoryService, CourseService co
 
     }
 
+    
 
-    [Route("/Courses/SingleCourse/{id}")]
+
     public async Task<IActionResult> SingleCourse(int id)
     {
         var response = await _httpClient.GetAsync($"https://localhost:7199/api/courses/{id}?key=ZWM5MTYxNmQtNzE0Mi00NDU3LTg4ZjgtYjIwYmFhODZkMjQ1");
         if (response.IsSuccessStatusCode)
         {
-            var courseViewModel = JsonConvert.DeserializeObject<CourseViewModel>(await response.Content.ReadAsStringAsync());
+                var jsonContent = await response.Content.ReadAsStringAsync();
 
-            return View(courseViewModel);
+                SingleCourseViewModel model = JsonConvert.DeserializeObject<SingleCourseViewModel>(jsonContent);
+
+                return View(model);
+            
         }
         else
         {
             return NotFound();
         }
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    /*
-    [Route("/Courses/SingleCourse")]
-    public async Task<IActionResult> SingleCourse(int id)
-    {
-        var response = await _httpClient.GetAsync($"https://localhost:7199/api/courses/{id}?key=ZWM5MTYxNmQtNzE0Mi00NDU3LTg4ZjgtYjIwYmFhODZkMjQ1");
-        if (response.IsSuccessStatusCode)
-        {
-            var courseViewModel = JsonConvert.DeserializeObject<CourseViewModel>(await response.Content.ReadAsStringAsync());
-
-            return View(courseViewModel);
-        }
-        else
-        {
-            return NotFound();
-        }
-    }
-    */
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
