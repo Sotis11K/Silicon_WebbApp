@@ -1,7 +1,14 @@
-﻿<section id="download-app">
+﻿@{
+    var themeMode = Context.Request.Cookies["ThemeMode"] ?? "light";
+    var isDark = (themeMode == "dark") ? true : false;
+}
+
+
+<section id="download-app">
     <div class="container">
         <div class="download-image">
-            <img src="~/images/other/downloadapp-screens.svg" alt="two phones displaying the app" />
+            <img src="~/images/other/downloadapp-screens.svg"  alt="two phones displaying the app" />
+
         </div>
 
 
@@ -21,7 +28,8 @@
                         <h4>Editor's choice</h4>
                         <p class="statistics">4.7, 187K+ reviews</p>
                     </div>
-                    <img src="~/images/other/appstore-download-light.svg" />
+                    <img src="~/images/other/@(isDark ? "appstore-download-dark.svg" : "appstore-download-light.svg")"/>
+                    
                 </div>
 
                 <p class="store">Google Play</p>
@@ -37,7 +45,8 @@
                         <h4>App of the Day</h4>
                         <p class="statistics">rating 4.8, 30K+ reviews</p>
                     </div>
-                    <img src="~/images/other/googleplay-download-light.svg" />
+                    <img src="~/images/other/@(isDark ? "googleplay-download-dark.svg" : "googleplay-download-light.svg")" />
+
                 </div>
 
 

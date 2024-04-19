@@ -1,12 +1,12 @@
-.contact-background{
-    background-color: $gray-200;
+.contact-background {
+    background-color: var(--color-gray-200);
 }
 
 
 
 #contact {
     height: max-content;
-    background-color: $gray-200;
+    background-color: var(--color-gray-200);
 
     .container {
 
@@ -19,9 +19,15 @@
                 margin-bottom: 2rem;
                 gap: 1rem;
 
+                @include md {
+                    justify-content: center;
+                    align-items: center;
+                }
+
+
                 a {
                     text-decoration: none;
-                    color: $gray-600;
+                    color: var(--color-gray-600);
                 }
 
                 a:nth-last-child(1) {
@@ -41,8 +47,15 @@
             flex-direction: column;
 
 
+            @include md {
+                justify-content: center;
+                align-items: center;
+            }
+
+
             h2 {
                 font-weight: 900;
+                color: var(--color-gray-900);
             }
 
             .contact-us-box {
@@ -72,14 +85,17 @@
                     flex-direction: column;
                     width: 300px;
                     gap: 1rem;
+                    color: var(--color-gray-900);
 
                     h3 {
                         margin: 0;
                         font-weight: 900;
+                        color: var(--color-gray-900);
                     }
 
                     p {
                         margin: 0;
+                        color: var(--color-gray-900);
                         font-weight: 300;
                     }
 
@@ -104,7 +120,7 @@
             position: absolute;
             right: 15%;
             padding: 3.5rem;
-            background-color: white;
+            background-color: var(--color-gray-000);
             width: max-content;
             top: 15%;
             display: flex;
@@ -114,7 +130,29 @@
             justify-content: start;
             align-items: start;
 
+
+
+            @include xxl {
+                width: 40%;
+                right: 10%;
+            }
+
+            @include lg {
+                right: 5%;
+            }
+
+            @include md {
+                transform: translate(-50%,-50%);
+                right: 50%;
+                left: 50%;
+                top: 150%;
+                width: 80vw;
+            }
+
+
+
             form {
+                position: relative;
                 width: max-content;
                 display: flex;
                 gap: 1.5rem;
@@ -124,25 +162,78 @@
                     width: 492px;
                     font-weight: 900;
                     margin-bottom: 1rem;
+                    color: var(--color-gray-900);
+
+                    @include xxl {
+                        width: 370px;
+                        right: 10%;
+                    }
+
+                    @include xl {
+                        width: 270px;
+                    }
+
+                    @include mdd {
+                        max-width: 200px !important;
+                    }
                 }
 
                 .input-group {
                     label {
                         font-weight: 600;
+                        color: var(--color-gray-900);
                     }
 
                     input {
+                        background-color: var(--color-gray-000);
+                        border: 1px solid var(--color-gray-200);
+
+
+                        @include xl {
+                            width: 300px;
+                        }
+
+                        @include mdd {
+                            max-width: 180px !important;
+                        }
+
+                        &::placeholder {
+                            color: var(--color-gray-900);
+                        }
+                    }
+
+                    select {
+                        @include xl {
+                            width: 300px;
+                        }
+
+                        @include mdd {
+                            max-width: 180px !important;
+                        }
                     }
 
                     textarea {
+                        border: 1px solid var(--color-gray-200);
                         height: 180px;
-                    }
+                        color: var(--color-gray-900);
+                        background-color: var(--color-gray-000);
 
-                    
+                        @include xl {
+                            width: 300px;
+                        }
+
+                        @include mdd {
+                            max-width: 180px !important;
+                        }
+                    }
                 }
 
                 button {
                     width: 246px;
+
+                    @include mdd {
+                        width: 160px !important;
+                    }
                 }
             }
         }
@@ -153,6 +244,10 @@
         margin-top: 10rem;
         width: 100%;
         height: 80vh;
+
+        @include md {
+            margin-top: 60rem;
+        }
 
         iframe {
             width: 100%;

@@ -1,6 +1,7 @@
 .courses {
     padding-top: 3rem;
     padding-bottom: 5rem;
+    background-color: var(--color-gray-000);
 
     .container {
 
@@ -11,7 +12,26 @@
             margin-bottom: 1rem;
 
 
+
+
+            @include lg {
+                flex-direction: column;
+                align-items: self-end;
+                text-align: center;
+                gap: 1rem;
+            }
+
+            @include mdd {
+                align-items: center;
+            }
+
             h1 {
+                color: var(--color-gray-900);
+
+                @include lg {
+                    margin-right: auto;
+                    margin-left: auto;
+                }
             }
 
             #form-filters {
@@ -20,40 +40,88 @@
                 align-items: center;
                 gap: 1.5rem;
 
+                @include lg {
+                    justify-content: flex-end;
+                    position: relative;
+                    margin-bottom: 2rem;
+                    margin-right: 5rem;
+                    gap: 0;
+                }
+
+                @include md {
+                    margin-right: 0rem;
+                }
+
+                @include mdd {
+                    margin-left: 30rem;
+                }
+
+
                 .select {
                     position: relative;
                     min-width: 300px;
 
-                    .selected{
-                        padding: 0.5rem 1rem;
-                        border-radius: 0.5rem;
-                        border: 1px solid $gray-400;
-                        cursor: pointer
+                    @include lg {
+                        min-width: 250px;
+                        width: 100px;
                     }
 
-                    .select-options{
+                    .selected {
+                        padding: 0.5rem 1rem;
+                        border-radius: 0.5rem;
+                        border: 1px solid var(--color-gray-400);
+                        cursor: pointer;
+                        background-color: var(--color-gray-000);
+                        color: var(--color-gray-900);
+
+                        @include lg {
+                            min-width: none;
+                            width: 200px;
+                        }
+                    }
+
+                    .select-options {
                         display: none;
                         position: absolute;
                         top: 100%;
                         left: 0;
                         right: 0;
-                        background-color: $white;
-                        border: solid 1px $gray-400;
+                        border: solid 1px var(--color-gray-400);
                         z-index: 9999;
+                        background-color: var(--color-gray-000);
+                        color: var(--color-gray-900);
 
-
-                        .option{
-                            padding: 10px;
-                            cursor: pointer;
+                        @include lg {
+                            width: 200px;
                         }
 
-                        .option:hover{
-                            background-color: $gray-400;
+                        .option {
+                            padding: 10px;
+                            cursor: pointer;
+                            background-color: var(--color-gray-000);
+                            color: var(--color-gray-900);
+                        }
+
+                        .option:hover {
+                            background-color: var(--color-gray-400);
                         }
                     }
                 }
 
                 .input-search-group {
+                    input {
+                        background-color: var(--color-gray-000);
+                        color: var(--color-gray-900);
+                       
+
+                        &::placeholder {
+                            color: var(--color-gray-900);
+                        }
+
+                        &:selected{
+                            border: solid 1px var(--color-gray-000);
+                        }
+                    }
                 }
             }
         }
@@ -70,11 +138,12 @@
                 border-radius: 8px;
                 overflow: hidden;
                 text-decoration: none;
-                box-shadow: 0 0 14px -4px $gray-500;
-                color: $gray-700;
+                box-shadow: 0 0 14px -4px var(--color-gray-500);
+                color: var(--color-gray-700);
+
 
                 &:hover {
-                    box-shadow: 0 0 14px -4px $gray-900;
+                    box-shadow: 0 0 14px -4px var(--color-gray-600);
                 }
 
                 .bestseller {
@@ -97,15 +166,13 @@
                     padding: 0.75rem 1rem;
                     display: flex;
                     justify-content: center;
+                    background-color: var(--color-gray-000);
+                    color: var(--color-gray-900);
                     align-items: center;
 
                     &:hover {
-                        background-color: $gray-900;
+                        background-color: var(--color-gray-900);
                         transition: 0.3s ease-in-out;
-
-                        i {
-                            color: $white;
-                        }
                     }
                 }
 
@@ -140,7 +207,7 @@
                         }
 
                         .discount-enabled {
-                            color: $gray-600;
+                            color: var(--color-gray-600);
                             text-decoration: line-through;
                             font-size: 18px;
                             font-weight: 400;
@@ -149,8 +216,8 @@
                 }
 
                 .footer {
-                    color: $gray-600;
-                    border-top: 1px solid $gray-400;
+                    color: var(--color-gray-600);
+                    border-top: 1px solid var(--color-gray-400);
                     display: flex;
                     margin-top: 1rem;
                     padding-top: 1rem;
@@ -158,6 +225,7 @@
 
 
                     .hours {
+
                         i {
                             margin-right: 5px;
                         }
@@ -172,26 +240,91 @@
             }
         }
 
+
+
+
+
+
+
+
+
+
+        .pagination {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 1rem;
+            margin-top: 1rem;
+            margin-bottom: 2rem;
+
+
+
+            .number {
+                padding: 0.5rem 1rem;
+                border-radius: 0.25rem;
+                color: var(--color-gray-900);
+            }
+
+            .active {
+                box-shadow: 0 0 10px -3px $theme;
+                background-color: $theme;
+                color: white;
+            }
+
+            a {
+                text-decoration: none;
+
+                &:hover {
+                    background-color: var(--color-gray-100);
+                }
+            }
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         .work-with-us {
-            background-color: $gray-200;
+            background-color: var(--color-gray-200);
             display: flex;
             justify-content: space-around;
             align-items: center;
             padding: 2rem 0;
 
+            @include lg {
+                flex-direction: column;
+                gap: 3rem;
+            }
+
             .work-with-us-text {
                 display: flex;
                 flex-direction: column;
                 gap: 1.5rem;
+
                 span {
                     font-size: 1.25rem;
                     font-weight: 400;
+                    color: var(--color-gray-900);
                 }
 
                 #skills-text {
                     width: 350px;
                     font-size: 2rem;
                     font-weight: bold;
+                    color: var(--color-gray-900);
+
+
+
 
                     span {
                         font-size: 1.875rem;
@@ -203,7 +336,13 @@
                 a {
                     width: 162px;
                     text-decoration: none;
-                    &:hover{
+
+                    @include lg {
+                        margin-left: auto;
+                        margin-right: auto;
+                    }
+
+                    &:hover {
                         text-decoration: underline;
                     }
                 }

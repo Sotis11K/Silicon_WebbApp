@@ -2,6 +2,8 @@
     var user = await UserManager.GetUserAsync(User);
     bool isRoot = Context.Request.Path.Value!.Equals("/");
 
+    var themeMode = Context.Request.Cookies["ThemeMode"] ?? "light";
+    var isDark = (themeMode == "dark") ? true : false;
 
 
     bool changeBackground = false;
@@ -15,7 +17,8 @@
 <header class="@(changeBackground ? "contact-background" : "")">
     <div class="container">
        <a id="logo" asp-action="Home" asp-controller="Default">
-           <img src="images/logos/silicon_logo1_light.svg"/>
+            <img src="images/logos/@(isDark ? " silicon_logo1_dark.svg" : "silicon_logo1_light.svg")" />
+
        </a>
 
        <nav>
@@ -30,12 +33,12 @@
         
 
         <div class="btn-switch">
-            <label>Light</label>
+            <label class="light-switch-text">Light</label>
             <label class="switch">
-                <input type="checkbox" id="switch-mode" @* checked="@isDarkMode" *@>
+                <input type="checkbox" id="switch-mode" checked="@isDark" >
                 <span class="slider round"></span>
             </label>
-            <label>Dark</label>
+            <label class="light-switch-text">Dark</label>
         </div>
 
         @if (SignInManager.IsSignedIn(User))
@@ -51,8 +54,8 @@
         else
         {
             <div class="account-buttons">
-                <a class="btn-gray btn" asp-action="SignIn" asp-controller="Auth"><i class="fa-solid fa-left-to-bracket"></i> Sign in</a>
-                <a class="btn-theme" asp-action="SignUp" asp-controller="Auth"><i class="fa-regular fa-user"></i> Sign up</a>
+                <a class="btn-gray account-btn" asp-action="SignIn" asp-controller="Auth"><i class="fa-solid fa-right-to-bracket"></i> Sign in</a>
+                <a class="btn-theme account-btn" asp-action="SignUp" asp-controller="Auth"><i class="fa-regular fa-user"></i> Sign up</a>
             </div>
 
         }

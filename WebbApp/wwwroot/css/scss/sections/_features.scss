@@ -1,6 +1,7 @@
 #features {
-    margin-top: 9rem;
-    background-color: $gray-200;
+    padding-top: 9rem;
+    background-color: var(--color-gray-000);
+
 
     .container {
         display: flex;
@@ -9,6 +10,14 @@
         align-items: center;
         padding: 5rem 0;
         height: max-content;
+        background-color: var(--color-gray-000) !important;
+        color: var(--color-gray-900);
+
+        h1 {
+            @include lg {
+                font-size: 2rem !important;
+            }
+        }
 
         p {
             width: 580px;
@@ -19,6 +28,14 @@
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             grid-template-rows: auto;
+            color: var(--color-gray-900);
+
+            @include xxl {
+                grid-template-columns: repeat(2, 1fr);
+                grid-template-rows: auto;
+            }
+
+
 
             .box {
                 width: 432px;
@@ -28,29 +45,95 @@
                 align-items: center;
                 justify-content: center;
                 padding: 2rem;
+                gap: 1rem;
+                margin: 0;
+
+                @include lg {
+                    width: 300px;
+                }
+
 
                 &:hover {
-                    background-color: white;
+                    background-color: var(--color-gray-100);
                     transition-duration: 0.40s;
                     cursor: pointer;
+                    color: var(--color-gray-900);
+
+                    p {
+                        color: var(--color-gray-900);
+                        transition-duration: 0.40s;
+                    }
                 }
 
                 p {
                     width: 350px;
+                    color: var(--color-gray-900);
+
+                    @include xxl {
+                        width: 160px;
+                    }
+
+                    @include lg {
+                        display: none;
+                    }
                 }
             }
 
-            #box1, #box2, #box3 {
-                border-right: solid 1px $gray-300;
-                border-bottom: solid 1px $gray-300;
+
+
+            #box1 {
+                border-right: var(--color-gray-300) solid 1px;
             }
 
-            #box4, #box5 {
-                border-right: solid 1px $gray-300;
+            #box2 {
+                border-right: var(--color-gray-300) solid 1px;
             }
 
             #box3 {
-                border-right: none;
+            }
+
+            #box4 {
+                border-top: var(--color-gray-300) solid 1px;
+                border-right: var(--color-gray-300) solid 1px;
+            }
+
+            #box5 {
+                border-top: var(--color-gray-300) solid 1px;
+                border-right: var(--color-gray-300) solid 1px;
+            }
+
+            #box6 {
+                border-top: var(--color-gray-300) solid 1px;
+            }
+
+            @include xxl {
+                #box1 {
+                    border-right: var(--color-gray-300) solid 1px;
+                    border-bottom: var(--color-gray-300) solid 1px;
+                }
+
+                #box2 {
+                    border-bottom: var(--color-gray-300) solid 1px;
+                    border-right: none;
+                }
+
+                #box3 {
+                    border-right: var(--color-gray-300) solid 1px;
+                }
+
+                #box4 {
+                    border-top: var(--color-gray-300) solid 1px;
+                    border-right: none;
+                }
+
+                #box5 {
+                    border-top: var(--color-gray-300) solid 1px;
+                    border-right: var(--color-gray-300) solid 1px;
+                }
+
+                #box6 {
+                    border-top: var(--color-gray-300) solid 1px;
+                }
             }
         }
     }

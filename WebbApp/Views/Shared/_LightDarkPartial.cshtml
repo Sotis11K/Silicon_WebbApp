@@ -1,5 +1,10 @@
-﻿<section id="lightdark">
-    <div class="dark-bg"></div>
+﻿@{
+    var themeMode = Context.Request.Cookies["ThemeMode"] ?? "light";
+    var isDark = (themeMode == "dark") ? true : false;
+}
+
+<section id="lightdark">
+    <div class="@(isDark ? "dark-bg-dark" : "dark-bg-light")"></div>
 
 
     <div class="container">

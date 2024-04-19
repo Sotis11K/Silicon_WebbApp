@@ -126,13 +126,6 @@ public class AccountController(UserManager<UserEntity> userManager, ApplicationC
 
 
 
-
-
-
-
-
-
-
     [HttpPost]
     public async Task<IActionResult> UploadProfileImage(IFormFile file)
     {
@@ -155,47 +148,7 @@ public class AccountController(UserManager<UserEntity> userManager, ApplicationC
 
 
 
-    public async Task<IActionResult> Security()
-    {
-        return View();
-    }
 
-
-
-
-
-    /*
-    [HttpPost]
-    public async Task<IActionResult> ChangePassword(AccountSecurityViewModel model)
-    {
-        if (ModelState.IsValid)
-        {
-            var user = await _userManager.GetUserAsync(User);
-            if (user != null)
-            {
-                var changePasswordResult = await _userManager.ChangePasswordAsync(user, model.CurrentPassword, model.NewPassword);
-                if (changePasswordResult.Succeeded)
-                {
-                    TempData["StatusMessage"] = "Password changed successfully.";
-                    return RedirectToAction("Security");
-                }
-                else
-                {
-                    foreach (var error in changePasswordResult.Errors)
-                    {
-                        ModelState.AddModelError(string.Empty, error.Description);
-                    }
-                }
-            }
-            else
-            {
-                TempData["StatusMessage"] = "User not found.";
-            }
-        }
-        // If we got this far, something failed, redisplay the form
-        return View("Security", model);
-    }
-    */
 
 
 
@@ -204,17 +157,6 @@ public class AccountController(UserManager<UserEntity> userManager, ApplicationC
     {
         if (ModelState.IsValid)
         {
-
-
-
-
-
-
-
-
-
-
-
 
             var user = await _userManager.GetUserAsync(User);
             if (user != null)
@@ -241,17 +183,6 @@ public class AccountController(UserManager<UserEntity> userManager, ApplicationC
         // If we got this far, something failed, redisplay the form
         return View("Security", model);
     }
-
-
-
-
-
-
-
-
-
-
-
 
 
     private bool ValidateAddressInfo(AccountAddressInfo addressInfo)
@@ -266,4 +197,26 @@ public class AccountController(UserManager<UserEntity> userManager, ApplicationC
         return true;
     }
 
+
+    public async Task<IActionResult> SavedCourses(int id)
+    {
+        // Retrieve the course details based on the provided ID
+        var course = await _context.Courses.FindAsync(id);
+
+        if (course == null)
+        {
+            return NotFound(); // If the course is not found, return a 404 Not Found response
+        }
+
+        // Pass the course details to the view
+        return View(course);
+    }
 }
+
+
+
+
+
+
+
+

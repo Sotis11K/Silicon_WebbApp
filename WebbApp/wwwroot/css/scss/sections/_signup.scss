@@ -1,11 +1,14 @@
 #signup {
     height: 100%;
+    background-color: var(--color-gray-000);
 
     .container {
         display: flex;
         justify-content: center;
         align-items: center;
         height: 100%;
+        background-color: var(--color-gray-000);
+
 
         .btn-theme-s {
             border: none;
@@ -21,7 +24,7 @@
 
         form {
             padding: 1rem;
-
+            color: var(--color-gray-900);
             .content {
                 display: grid;
                 gap: 0 2rem;
@@ -32,6 +35,13 @@
                 @include md {
                     grid-template-columns: 1fr 1fr;
                     grid-template-areas: "firstname lastname" "email email" "password password" "confirm confirm" "terms terms" "button button";
+                }
+
+                .input-group {
+                    input {
+                        background-color: var(--color-gray-000);
+                        border: solid 1px var(--color-gray-200)
+                    }
                 }
 
                 #form-firstname {

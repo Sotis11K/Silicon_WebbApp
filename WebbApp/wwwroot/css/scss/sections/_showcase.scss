@@ -1,29 +1,59 @@
+
+
 #showcase {
+    background-color: var(--color-gray-000);
+
     .background-image {
         position: absolute;
         right: 0;
+
+        @include xxl {
+            display: none;
+        }
     }
 
     .container {
         padding: 100px 0;
+        display: block;
+
+        @include xxl {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
 
         .content {
             display: flex;
             flex-direction: column;
             gap: 2rem;
+            
+            @include xxl{
+                justify-content: center;
+                align-items: center;
+            }
 
             #showcase-title {
                 width: 526px;
                 font-size: 60px;
                 font-weight: bold;
-                color: $gray-900;
+                color: var(--color-gray-900);
                 text-shadow: 1px 1px 3px black;
                 line-height: 70px;
+
+                @include xxl {
+                    text-align: center;
+                    width: 80%;
+                    font-size: 3rem;
+                }
             }
 
             p {
                 width: 34%;
-                color: $gray-700;
+                color: var(--color-gray-700);
+
+                @include xxl {
+                    width: 50%;
+                }
             }
 
             a {
@@ -34,8 +64,11 @@
 
             h6 {
                 margin-top: 6rem;
-                color: $gray-900;
+                color: var(--color-gray-900);
                 font-weight: bolder;
+                @include xxl{
+                    margin-top: 3rem;
+                }
             }
 
             .brands {

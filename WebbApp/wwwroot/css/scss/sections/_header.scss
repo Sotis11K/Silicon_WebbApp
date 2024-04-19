@@ -1,5 +1,6 @@
 header {
     padding: 15px 0;
+    background-color: var(--color-gray-000);
 
     .container {
         display: grid;
@@ -7,11 +8,16 @@ header {
         grid-template-columns: 1fr auto;
         grid-template-areas: "logo mobile";
         gap: 40px;
-
-        @include lg {
-            grid-template-columns: auto 1fr auto auto;
-            grid-template-areas: "logo menu switch buttons profile";
+        grid-template-columns: auto 1fr auto auto;
+        grid-template-areas: "logo menu switch buttons profile";
+        @include md{
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: center;
         }
+
+
 
         #logo {
             grid-area: logo;
@@ -25,25 +31,34 @@ header {
 
             a {
                 text-decoration: none;
-                color: $black;
                 font-weight: 700;
+                color: var(--color-gray-900);
+            }
+
+            @include lg {
+                a:nth-child(1) {
+                    display: none;
+                }
+
+                a:nth-child(2) {
+                    display: none;
+                }
             }
         }
 
         .btn-switch {
             grid-area: switch;
-            display: none;
 
-            @include lg {
-                display: block;
+            .light-switch-text {
+                color: var(--color-gray-900);
             }
         }
-
 
         .profile {
             display: flex;
             justify-content: center;
             align-items: center;
+
             .profile-image {
                 a {
                     img {
@@ -58,24 +73,28 @@ header {
 
         .account-buttons {
             grid-area: buttons;
-            display: none;
             gap: 15px;
+            flex-direction: row;
+            display: flex;
+
+            .account-btn {
+                @include lg{
+                    width: max-content;
+                }
+                @include md{
+                    padding: 0.5rem 3rem;
+                }
+            }
 
             a {
                 text-decoration: none;
             }
 
-            @include lg {
-                display: flex;
-            }
-        }
 
-        .btn-mobile {
-            grid-area: mobile;
-            display: block;
 
-            @include lg {
-                display: none;
+            .btn-gray {
+                background-color: var(--color-gray-100);
+                color: var(--color-gray-900);
             }
         }
     }

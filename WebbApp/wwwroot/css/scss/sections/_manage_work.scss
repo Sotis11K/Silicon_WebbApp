@@ -1,17 +1,38 @@
 #manage-work {
     padding: 4rem 0;
+
     .container {
         display: flex;
         align-items: center;
+        color: var(--color-gray-900);
+
+        @include md {
+            flex-direction: column;
+            gap: 2rem;
+        }
 
         img {
             flex: 1;
             width: 50%;
+
+            @include md {
+                display: none;
+            }
+        }
+
+        #lower-img {
+            display: none;
+
+            @include md {
+                display: block;
+                width: 100%;
+            }
         }
 
         .content {
             flex: 1;
             margin-left: 80px;
+
             ul {
                 list-style: none;
                 margin: 2rem 0;
@@ -20,6 +41,7 @@
 
                 li {
                     margin-bottom: 10px;
+
                     i {
                         color: $theme;
                         margin-right: 8px;
