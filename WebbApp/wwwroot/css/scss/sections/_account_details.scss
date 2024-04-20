@@ -11,6 +11,10 @@
         .profile-info {
             margin: 20px;
             text-align: center;
+            background-color: aqua;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
 
             h5 {
                 margin-top: 15px;
@@ -19,6 +23,17 @@
 
             p {
                 @include text-m;
+            }
+
+            img {
+                width: 120px;
+                height: 120px;
+                border-radius: 50%;
+            }
+
+            #change-img {
+                background-color: red;
+                width: max-content;
             }
         }
 
@@ -33,19 +48,6 @@
                 text-align: left;
                 justify-content: flex-start;
                 font-weight: 700;
-            }
-
-            .btn-theme-s {
-                text-align: left;
-                justify-content: flex-start;
-            }
-
-            .btn-transparent {
-                text-align: left;
-                @include button;
-                justify-content: flex-start;
-                padding-top: 10px;
-                padding-bottom: 13px;
                 color: var(--color-gray-900);
             }
         }

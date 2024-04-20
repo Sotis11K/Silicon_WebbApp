@@ -588,13 +588,11 @@ header {
   background-color: var(--color-gray-000);
 }
 header .container {
-  display: grid;
+  display: flex;
   align-items: center;
-  grid-template-columns: 1fr auto;
-  grid-template-areas: "logo mobile";
   gap: 40px;
-  grid-template-columns: auto 1fr auto auto;
-  grid-template-areas: "logo menu switch buttons profile";
+  justify-content: center;
+  align-items: center;
 }
 @media (max-width: 768px) {
   header .container {
@@ -604,14 +602,13 @@ header .container {
     justify-content: center;
   }
 }
-header .container #logo {
-  grid-area: logo;
-}
 header .container nav {
-  grid-area: menu;
   display: flex;
   flex-direction: row;
   gap: 1rem;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
 }
 header .container nav a {
   text-decoration: none;
@@ -627,7 +624,17 @@ header .container nav a {
   }
 }
 header .container .btn-switch {
-  grid-area: switch;
+  margin-left: auto;
+}
+@media (max-width: 768px) {
+  header .container .btn-switch {
+    margin-left: 2rem;
+  }
+}
+@media (max-width: 500px) {
+  header .container .btn-switch {
+    margin-left: 0rem;
+  }
 }
 header .container .btn-switch .light-switch-text {
   color: var(--color-gray-900);
@@ -643,7 +650,6 @@ header .container .profile .profile-image a img {
   height: 50px;
 }
 header .container .account-buttons {
-  grid-area: buttons;
   gap: 15px;
   flex-direction: row;
   display: flex;
@@ -862,48 +868,32 @@ header .container .account-buttons .btn-gray {
 }
 
 #signup {
-  height: 100%;
   background-color: var(--color-gray-000);
 }
 #signup .container {
   display: flex;
   justify-content: center;
-  align-items: center;
   height: 100%;
   background-color: var(--color-gray-000);
 }
 #signup .container .btn-theme-s {
   border: none;
 }
-@media (max-width: 992px) {
-  #signup .container {
-    width: 60%;
-  }
-}
-@media (max-width: 1200px) {
-  #signup .container {
-    width: 40%;
-  }
-}
 #signup .container form {
   padding: 1rem;
   color: var(--color-gray-900);
+  width: max-content;
 }
 #signup .container form .content {
   display: grid;
-  gap: 0 2rem;
-  grid-template-columns: 1fr;
-  grid-template-areas: "firstname" "lastname" "email" "password" "confirm" "terms" "button";
-}
-@media (max-width: 768px) {
-  #signup .container form .content {
-    grid-template-columns: 1fr 1fr;
-    grid-template-areas: "firstname lastname" "email email" "password password" "confirm confirm" "terms terms" "button button";
-  }
+  gap: 1.5rem;
+  grid-template-columns: 1fr 1fr;
+  grid-template-areas: "firstname lastname" "email email" "password password" "confirm confirm" "terms terms" "button button";
 }
 #signup .container form .content .input-group input {
   background-color: var(--color-gray-000);
-  border: solid 1px var(--color-gray-200);
+  color: var(--color-gray-900);
+  border: solid 1px var(--color-gray-100);
 }
 #signup .container form .content #form-firstname {
   grid-area: firstname;
@@ -917,12 +907,15 @@ header .container .account-buttons .btn-gray {
 #signup .container form .content #form-password {
   grid-area: password;
 }
-#signup .container form .content #form-confirm {
+#signup .container form .content #form-confirmpassword {
   grid-area: confirm;
 }
-#signup .container form .content #form-terms {
+#signup .container form .content #form-checkbox {
   grid-area: terms;
   padding: 1rem 0;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
 }
 #signup .container form .content #form-button {
   grid-area: button;
@@ -962,6 +955,13 @@ header .container .account-buttons .btn-gray {
   padding: 1rem;
   width: 100%;
 }
+@media (max-width: 768px) {
+  #signin .container form {
+    display: flex;
+    flex-direction: column;
+    width: max-content;
+  }
+}
 #signin .container form h1 {
   color: var(--color-gray-900);
 }
@@ -978,6 +978,12 @@ header .container .account-buttons .btn-gray {
   gap: 20px;
   grid-template-columns: 1fr;
   grid-template-areas: "email" "password" "remember" "button" "forgot" "hr" "external";
+}
+@media (max-width: 768px) {
+  #signin .container form .content {
+    display: flex;
+    flex-direction: column;
+  }
 }
 #signin .container form .content .input-group {
   border-radius: 0.25rem !important;
@@ -1072,6 +1078,10 @@ header .container .account-buttons .btn-gray {
 #account-details aside .profile-info {
   margin: 20px;
   text-align: center;
+  background-color: aqua;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 #account-details aside .profile-info h5 {
   margin-top: 15px;
@@ -1084,6 +1094,15 @@ header .container .account-buttons .btn-gray {
   font-family: "Manrope", sans-serif;
   font-size: 16px !important;
 }
+#account-details aside .profile-info img {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+}
+#account-details aside .profile-info #change-img {
+  background-color: red;
+  width: max-content;
+}
 #account-details aside nav {
   margin-top: 50px;
   text-align: left;
@@ -1095,25 +1114,6 @@ header .container .account-buttons .btn-gray {
   text-align: left;
   justify-content: flex-start;
   font-weight: 700;
-}
-#account-details aside nav .btn-theme-s {
-  text-align: left;
-  justify-content: flex-start;
-}
-#account-details aside nav .btn-transparent {
-  text-align: left;
-  border-radius: 6px;
-  text-align: center;
-  font-size: 14px;
-  padding: 8px 28px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 12px;
-  font-family: "Manrope", sans-serif;
-  justify-content: flex-start;
-  padding-top: 10px;
-  padding-bottom: 13px;
   color: var(--color-gray-900);
 }
 #account-details .details {
@@ -1195,6 +1195,103 @@ header .container .account-buttons .btn-gray {
   gap: 20px;
 }
 
+#security {
+  display: grid;
+  grid-template-columns: 2fr 5fr;
+  gap: 150px;
+  margin-bottom: 70px;
+  margin-top: 50px;
+  width: 100%;
+}
+#security aside {
+  border-right: 1px solid var(--color-gray-300);
+  padding-right: 20px;
+  background-color: yellow;
+}
+#security aside .profile-info {
+  margin: 20px;
+  text-align: center;
+  background-color: aqua;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+#security aside .profile-info h5 {
+  margin-top: 15px;
+  margin-bottom: 0;
+}
+#security aside .profile-info p {
+  line-height: 160%;
+  font-weight: 400;
+  color: #565973;
+  font-family: "Manrope", sans-serif;
+  font-size: 16px !important;
+}
+#security aside .profile-info img {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+}
+#security aside .profile-info #change-img {
+  background-color: red;
+  width: max-content;
+}
+#security aside nav {
+  margin-top: 50px;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+#security aside nav a {
+  text-align: left;
+  justify-content: flex-start;
+  font-weight: 700;
+  color: var(--color-gray-900);
+}
+#security .security-information .security-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: max-content;
+}
+#security .security-information .security-form h2 {
+  font-weight: 800;
+  color: var(--color-gray-900);
+}
+#security .security-information .security-form span {
+  color: #6366F1;
+  font-weight: 600;
+  font-size: 1.25rem;
+}
+#security .security-information .security-form .input-group {
+  margin-bottom: 1rem;
+}
+#security .security-information .security-form .input-group label {
+  font-weight: bold;
+  margin-bottom: 0.25rem;
+}
+#security .security-information .security-form .input-group input {
+  width: 416px;
+}
+#security .security-information .security-form .updated-password {
+  display: flex;
+  gap: 2rem;
+}
+#security .security-information .security-form .security-buttons {
+  display: flex;
+  gap: 1.5rem;
+}
+#security .security-information .security-form .security-buttons button {
+  width: 20%;
+  border-radius: 0.5rem;
+}
+#security .security-information .security-form .security-buttons .btn-cancel {
+  background-color: var(--color-gray-300);
+  border: none;
+  outline: none;
+  width: 15%;
+}
 .courses {
   padding-top: 3rem;
   padding-bottom: 5rem;

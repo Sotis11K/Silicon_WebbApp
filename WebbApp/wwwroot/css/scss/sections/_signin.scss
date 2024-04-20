@@ -31,6 +31,13 @@
             padding: 1rem;
             width: 100%;
 
+            @include md {
+                display: flex;
+                flex-direction: column;
+                width: max-content;
+            }
+
+
             h1 {
                 color: var(--color-gray-900);
             }
@@ -51,6 +58,10 @@
                 grid-template-columns: 1fr;
                 grid-template-areas: "email" "password" "remember" "button" "forgot" "hr" "external";
 
+                @include md {
+                    display: flex;
+                    flex-direction: column;
+                }
 
                 .input-group {
                     border-radius: 0.25rem !important;

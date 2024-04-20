@@ -153,12 +153,16 @@ public class AccountController(UserManager<UserEntity> userManager, ApplicationC
 
 
 
+    
 
-
+    public IActionResult Security()
+    {
+        return View();
+    }
 
 
     [HttpPost]
-    public async Task<IActionResult> ChangePassword(AccountSecurityViewModel model)
+    public async Task<IActionResult> Security(AccountSecurityViewModel model)
     {
         if (ModelState.IsValid)
         {

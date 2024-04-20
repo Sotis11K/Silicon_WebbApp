@@ -1,11 +1,9 @@
 #signup {
-    height: 100%;
     background-color: var(--color-gray-000);
 
     .container {
         display: flex;
         justify-content: center;
-        align-items: center;
         height: 100%;
         background-color: var(--color-gray-000);
 
@@ -13,34 +11,21 @@
         .btn-theme-s {
             border: none;
         }
-
-        @include lg {
-            width: 60%;
-        }
-
-        @include xl {
-            width: 40%;
-        }
-
         form {
             padding: 1rem;
             color: var(--color-gray-900);
+            width: max-content;
             .content {
                 display: grid;
-                gap: 0 2rem;
-                grid-template-columns: 1fr;
-                grid-template-areas: "firstname" "lastname" "email" "password" "confirm" "terms" "button";
-
-
-                @include md {
-                    grid-template-columns: 1fr 1fr;
-                    grid-template-areas: "firstname lastname" "email email" "password password" "confirm confirm" "terms terms" "button button";
-                }
+                gap: 1.5rem;
+                grid-template-columns: 1fr 1fr;
+                grid-template-areas: "firstname lastname" "email email" "password password" "confirm confirm" "terms terms" "button button";
 
                 .input-group {
                     input {
                         background-color: var(--color-gray-000);
-                        border: solid 1px var(--color-gray-200)
+                        color: var(--color-gray-900);
+                        border: solid 1px var(--color-gray-100);
                     }
                 }
 
@@ -60,13 +45,16 @@
                     grid-area: password;
                 }
 
-                #form-confirm {
+                #form-confirmpassword {
                     grid-area: confirm;
                 }
 
-                #form-terms {
+                #form-checkbox {
                     grid-area: terms;
                     padding: 1rem 0;
+                    display: flex;
+                    align-items: center;
+                    gap: 1rem;
                 }
 
                 #form-button {
