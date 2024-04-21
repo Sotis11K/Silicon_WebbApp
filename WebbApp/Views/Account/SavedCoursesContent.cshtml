@@ -1,25 +1,139 @@
-﻿@model List<Infrastructure.Entities.SavedCourseEntity>
-    <h1>Saved Courses</h1>
+﻿@model List<SavedCourseViewModel>
 
-<div class="profile-info">
-    <partial name="~/Views/Account/_AccountProfile.cshtml" />
+
+@{
+    ViewData["Title"] = "Saved Courses";
+    var user = await UserManager.GetUserAsync(User);
+
+
+
+    bool accountDetailsActive = false;
+
+    if (Context.Request.Path.Value!.Equals("/Account/Details") == true)
+    {
+        accountDetailsActive = true;
+    }
+
+    bool accountSecurityActive = false;
+
+    if (Context.Request.Path.Value!.Equals("/Account/Security") == true)
+    {
+        accountSecurityActive = true;
+    }
+
+    bool accountSavedCoursesActive = false;
+
+    if (Context.Request.Path.Value!.Equals("/Account/SavedCoursesContent") == true)
+    {
+        accountSavedCoursesActive = true;
+    }
+
+
+    var themeMode = Context.Request.Cookies["ThemeMode"] ?? "light";
+    var isDark = (themeMode == "dark") ? true : false;
+
+}
+
+
+<div class="mega-div">
+    <div class="container">
+        <section id="savedcourses">
+            <aside>
+                <div class="profile-info">
+                    <img id="testing-img" src="~/images/uploads/profiles/@user.ProfileImage" alt="@user.FirstName @user.LastName" />
+
+                    <form id="change-img" enctype="multipart/form-data" method="post" asp-action="UploadProfileImage" asp-controller="Account">
+                        <input id="fileUploader" type="file" name="file" hidden />
+                        <label for="fileUploader" class="btn btn-circle btn-circle-sm">Change Profile Picture</label>
+                    </form>
+
+
+
+                    <h2>@($"{user.FirstName} {user.LastName}")</h2>
+                    <h5>@user.Email</h5>
+
+
+                    <nav>
+                        <a class="@(accountDetailsActive ? "active" : "")" asp-action="Details" asp-controller="Account"><i class="fa-solid fa-gear"></i>Account Details</a>
+                        <a class="@(accountSecurityActive ? "active" : "")" asp-action="Security" asp-controller="Account"><i class="fa-regular fa-lock"></i>Account Security</a>
+                        <a class="@(accountSavedCoursesActive ? "active" : "")" asp-action="SavedCoursesContent" asp-controller="Account"><i class="fa-regular fa-bookmark"></i>Saved Courses</a>
+                        <a class="details-btn" asp-action="signout" asp-controller="Auth"><i class="fa-solid fa-arrow-right-from-bracket"></i>Sign Out</a>
+                    </nav>
+                </div>
+            </aside>
+
+            @if (!string.IsNullOrEmpty(ViewData["StatusMessage"]?.ToString()))
+            {
+                <div class="alert alert-danger">
+                    @ViewData["StatusMessage"]
+                </div>
+            }
+
+
+            <div class="delete-all-form">
+                <h2>Saved Items</h2>
+                <button onclick="saveCourseDeleteAll()">Delete all</button>
+            </div>
+
+
+
+            @if (Model != null && Model.Count > 0)
+            {
+                <div class="course-items">
+
+                    @foreach (var course in Model)
+                    {
+                        <div class="course" @*onclick="window.location.href='@Url.Action("SingleCourse", "Courses", new {id = @course.Id})'"*@>
+
+                            @if (course.IsBestSeller)
+                            {
+                                <div class="bestseller">Best Seller</div>
+                            }
+                            <button class="btn-circle bookmark" onclick="saveCourseDelete(@course.Id)"><i class="fa-regular fa-bookmark"></i></button>
+
+                            <img src="~/images/courses/@course.Image" alt="@course.Title" />
+                            <div class="content">
+                                <h5 class="title">@course.Title</h5>
+                                <p class="author">@course.Author</p>
+                                <div class="pricing">
+                                    @if (!string.IsNullOrEmpty(course.DiscountPrice))
+                                    {
+                                        <div class="discount">@course.DiscountPrice</div>
+                                    }
+                                    <div class="price @(!string.IsNullOrEmpty(course.DiscountPrice)? "discount-enabled" : "")">@course.Price</div>
+                                </div>
+                                <div class="footer">
+                                    <div class="hours">
+                                        <i class="fa-regular fa-clock"></i> @course.Hours hours
+                                    </div>
+                                    <div class="likes">
+                                        <i class="fa-regular fa-thumbs-up"></i> @course.LikesInProcent (@course.LikesInNumbers)
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            }
+
+
+
+
+
+
+
+            else
+            {
+                <p>No saved courses found.</p>
+            }
+
+
+
+
+
+
+
+
+        </section>
+    </div>
 </div>
-
-
-    <table>
-        <tr>
-            <th>Course ID</th>
-            <th>Title</th>
-            <th>Author</th>
-            <!-- Add more columns as needed -->
-        </tr>
-        @foreach (var course in Model)
-        {
-            <tr>
-                <td>@course.CourseId</td>
-                <td>@course.Title</td>
-                <td>@course.Author</td>
-                <!-- Add more columns as needed -->
-            </tr>
-        }
-    </table>

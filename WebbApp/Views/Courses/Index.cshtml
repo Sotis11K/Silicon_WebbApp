@@ -38,7 +38,7 @@
             <div class="course-items">
                 @foreach(var course in Model.Courses)
                 {
-                    <div class="course" onclick="window.location.href='@Url.Action("SingleCourse", "Courses", new {id = @course.Id})'">
+                    <div class="course" @*onclick="window.location.href='@Url.Action("SingleCourse", "Courses", new {id = @course.Id})'"*@>
 
                         @if (course.IsBestSeller)
                         {

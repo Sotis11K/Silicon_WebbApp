@@ -242,39 +242,144 @@ public class AccountController(UserManager<UserEntity> userManager, ApplicationC
         return true;
     }
 
-    
+
     public async Task<IActionResult> SavedCourses(int id)
     {
-        // Retrieve the course details based on the provided ID
-        var response = await _httpClient.GetAsync($"https://localhost:7199/api/courses/{id}?key=ZWM5MTYxNmQtNzE0Mi00NDU3LTg4ZjgtYjIwYmFhODZkMjQ1");
-
-        if (response.IsSuccessStatusCode)
+        try
         {
-            var jsonContent = await response.Content.ReadAsStringAsync();
+            // Check if a course with the same CourseId already exists in the database
+            var existingCourse = await _context.SavedCourses.FirstOrDefaultAsync(c => c.CourseId == id);
 
-            var savedCourse = JsonConvert.DeserializeObject<SavedCourseEntity>(jsonContent);
+            if (existingCourse != null)
+            {
+                // If the course already exists, return a message indicating that it already exists
+                return BadRequest("Course with the same CourseId already exists.");
+            }
 
-            // Add the saved course to the database
-            _context.SavedCourses.Add(savedCourse);
+            // Create an instance of SavedCourseEntity
+            var courseEntity = new SavedCourseEntity
+            {
+                CourseId = id
+            };
+
+            // Add the entity to the context
+            _context.SavedCourses.Add(courseEntity);
+
+            // Save changes to the database
             await _context.SaveChangesAsync();
 
+            // Return success response
             return Ok();
         }
-        else
+        catch (Exception ex)
         {
-            return NotFound();
+            // Handle exceptions if any
+            return StatusCode(500, "An error occurred while saving the course: " + ex.Message);
         }
-
     }
 
-    [HttpGet]
     public async Task<IActionResult> SavedCoursesContent()
     {
-        // Retrieve saved courses from the database
-        var savedCourses = await _context.SavedCourses.ToListAsync();
+        try
+        {
+            // Retrieve CourseId values from the SavedCourses database table
+            var courseIds = await _context.SavedCourses
+                                          .Select(t => t.CourseId)
+                                          .ToListAsync();
 
-        // Pass the saved courses to the view
-        return View(savedCourses);
+            // Create a list to store the retrieved course details
+            var savedCourses = new List<SavedCourseViewModel>();
+
+            // Iterate over each courseId and make individual requests
+            foreach (var courseId in courseIds)
+            {
+                var response = await _httpClient.GetAsync($"https://localhost:7199/api/courses/{courseId}?key=ZWM5MTYxNmQtNzE0Mi00NDU3LTg4ZjgtYjIwYmFhODZkMjQ1");
+                if (response.IsSuccessStatusCode)
+                {
+                    var jsonContent = await response.Content.ReadAsStringAsync();
+                    var model = JsonConvert.DeserializeObject<SavedCourseViewModel>(jsonContent);
+
+                    // Add the retrieved course details to the list
+                    savedCourses.Add(model);
+                }
+                else
+                {
+                    // Handle the case where the request was not successful
+                    // You might want to log or handle this scenario appropriately
+                }
+            }
+
+            // Pass the list of retrieved course details to the view
+            return View(savedCourses);
+        }
+        catch (Exception ex)
+        {
+            // Handle exceptions if any
+            return StatusCode(500, "An error occurred while retrieving saved course details: " + ex.Message);
+        }
+    }
+
+
+    [HttpPost]
+    public async Task<IActionResult> SavedCoursesContentDelete(int id)
+    {
+        try
+        {
+            // Find the SavedCourseEntity with the given id
+            var courseToDelete = await _context.SavedCourses.FirstOrDefaultAsync(c => c.CourseId == id);
+
+            if (courseToDelete == null)
+            {
+                // If the course with the given id doesn't exist, return a NotFound response
+                return NotFound("Course not found.");
+            }
+
+            // Remove the course from the context
+            _context.SavedCourses.Remove(courseToDelete);
+
+            // Save changes to the database
+            await _context.SaveChangesAsync();
+
+            // Return a success response
+            return Ok();
+        }
+        catch (Exception ex)
+        {
+            // Handle exceptions if any
+            return StatusCode(500, "An error occurred while deleting the course: " + ex.Message);
+        }
+    }
+
+
+
+    [HttpPost]
+    public async Task<IActionResult> SavedCoursesContentDeleteAll()
+    {
+        try
+        {
+            // Retrieve all saved courses from the database
+            var allCourses = await _context.SavedCourses.ToListAsync();
+
+            if (allCourses == null || allCourses.Count == 0)
+            {
+                // If there are no saved courses, return a NotFound response
+                return NotFound("No saved courses found.");
+            }
+
+            // Remove all saved courses from the context
+            _context.SavedCourses.RemoveRange(allCourses);
+
+            // Save changes to the database
+            await _context.SaveChangesAsync();
+
+            // Return a success response
+            return Ok();
+        }
+        catch (Exception ex)
+        {
+            // Handle exceptions if any
+            return StatusCode(500, "An error occurred while deleting all saved courses: " + ex.Message);
+        }
     }
 
 
@@ -282,7 +387,9 @@ public class AccountController(UserManager<UserEntity> userManager, ApplicationC
 
 
 
-   
+
+
+
 
 
 }

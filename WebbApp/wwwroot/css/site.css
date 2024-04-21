@@ -1510,6 +1510,179 @@ header .container .account-buttons .btn-gray {
   background-color: red;
 }
 
+.mega-div .container #savedcourses {
+  display: grid;
+  grid-template-columns: 2fr 5fr;
+  gap: 150px;
+  margin-bottom: 70px;
+  margin-top: 50px;
+  width: 100%;
+}
+.mega-div .container #savedcourses aside {
+  border-right: 1px solid var(--color-gray-300);
+  padding-right: 20px;
+  height: max-content;
+}
+.mega-div .container #savedcourses aside .profile-info {
+  margin: 20px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.mega-div .container #savedcourses aside .profile-info p {
+  line-height: 160%;
+  font-weight: 400;
+  color: #565973;
+  font-family: "Manrope", sans-serif;
+  font-size: 16px !important;
+}
+.mega-div .container #savedcourses aside .profile-info img {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+}
+.mega-div .container #savedcourses aside .profile-info #change-img {
+  width: max-content;
+  background-color: var(--color-gray-600);
+  margin-top: 1rem;
+  box-shadow: 0 0 8px -3px var(--color-gray-900);
+  border-radius: 0.25rem;
+  margin-bottom: 1rem;
+}
+.mega-div .container #savedcourses aside .profile-info #change-img label {
+  color: var(--color-gray-000);
+}
+.mega-div .container #savedcourses aside .profile-info h2 {
+  font-weight: 900;
+  color: var(--color-gray-900);
+}
+.mega-div .container #savedcourses aside .profile-info h5 {
+  margin-top: 0.75rem;
+  color: var(--color-gray-900);
+}
+.mega-div .container #savedcourses aside nav {
+  margin-top: 2rem;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+.mega-div .container #savedcourses aside nav a {
+  text-align: left;
+  justify-content: flex-start;
+  font-weight: 700;
+  color: var(--color-gray-900);
+  text-decoration: none;
+  text-align: left;
+  padding: 0.5rem 2rem;
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+.mega-div .container #savedcourses aside nav a:hover {
+  text-decoration: underline;
+}
+.mega-div .container #savedcourses aside nav .active {
+  background-color: #6366F1;
+  border-radius: 0.5rem;
+  box-shadow: 0 0 8px -4px #6366F1;
+  color: white;
+}
+.mega-div .container #savedcourses aside nav .active:hover {
+  background-color: var(--color-gray-700);
+}
+.mega-div .container #savedcourses .course-items {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 2rem;
+}
+.mega-div .container #savedcourses .course-items .course {
+  position: relative;
+  display: block;
+  border-radius: 8px;
+  overflow: hidden;
+  text-decoration: none;
+  box-shadow: 0 0 14px -4px var(--color-gray-500);
+  color: var(--color-gray-700);
+}
+.mega-div .container #savedcourses .course-items .course:hover {
+  box-shadow: 0 0 14px -4px var(--color-gray-600);
+}
+.mega-div .container #savedcourses .course-items .course .bestseller {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  background-color: #22C55E;
+  color: #FFFFFF;
+  padding: 4px 12px;
+  border-radius: 4px;
+}
+.mega-div .container #savedcourses .course-items .course .bookmark {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  z-index: 999;
+  border: none;
+  border-radius: 50%;
+  padding: 0.75rem 1rem;
+  display: flex;
+  justify-content: center;
+  background-color: var(--color-gray-000);
+  color: var(--color-gray-900);
+  align-items: center;
+}
+.mega-div .container #savedcourses .course-items .course .bookmark:hover {
+  background-color: var(--color-gray-900);
+  transition: 0.3s ease-in-out;
+}
+.mega-div .container #savedcourses .course-items .course img {
+  width: 100%;
+}
+.mega-div .container #savedcourses .course-items .course .content {
+  padding: 1rem 2rem;
+}
+.mega-div .container #savedcourses .course-items .course .content .title {
+  font-size: 20px;
+  margin: 0.5rem 0;
+}
+.mega-div .container #savedcourses .course-items .course .content .pricing {
+  display: flex;
+  gap: 1rem;
+  font-size: 18px;
+  font-weight: 600;
+}
+.mega-div .container #savedcourses .course-items .course .content .pricing .discount {
+  color: #EF4444;
+  font-size: 18px;
+  font-weight: 600;
+}
+.mega-div .container #savedcourses .course-items .course .content .pricing .original {
+  color: #6366F1;
+  font-size: 18px;
+  font-weight: 600;
+}
+.mega-div .container #savedcourses .course-items .course .content .pricing .discount-enabled {
+  color: var(--color-gray-600);
+  text-decoration: line-through;
+  font-size: 18px;
+  font-weight: 400;
+}
+.mega-div .container #savedcourses .course-items .course .footer {
+  color: var(--color-gray-600);
+  border-top: 1px solid var(--color-gray-400);
+  display: flex;
+  margin-top: 1rem;
+  padding-top: 1rem;
+  gap: 2rem;
+}
+.mega-div .container #savedcourses .course-items .course .footer .hours i {
+  margin-right: 5px;
+}
+.mega-div .container #savedcourses .course-items .course .footer .likes i {
+  margin-right: 5px;
+}
+
 .courses {
   padding-top: 3rem;
   padding-bottom: 5rem;
