@@ -1157,6 +1157,10 @@ header .container .account-buttons .btn-gray {
     margin-left: -9rem;
   }
 }
+.mega-div #account-details .details .success {
+  background-color: #22C55E;
+  border: 1px solid green;
+}
 .mega-div #account-details .details .basic-info form {
   padding: 1rem;
 }
@@ -1216,6 +1220,7 @@ header .container .account-buttons .btn-gray {
 }
 .mega-div #account-details .details .basic-info form .content #form-bio textarea {
   background-color: var(--color-gray-000);
+  color: var(--color-gray-900);
 }
 .mega-div #account-details .details .basic-info form .content #form-bio span {
   color: var(--color-gray-500);
@@ -1523,6 +1528,11 @@ header .container .account-buttons .btn-gray {
   padding-right: 20px;
   height: max-content;
 }
+@media (max-width: 500px) {
+  .mega-div .container #savedcourses aside {
+    width: 85%;
+  }
+}
 .mega-div .container #savedcourses aside .profile-info {
   margin: 20px;
   text-align: center;
@@ -1592,24 +1602,74 @@ header .container .account-buttons .btn-gray {
 .mega-div .container #savedcourses aside nav .active:hover {
   background-color: var(--color-gray-700);
 }
-.mega-div .container #savedcourses .course-items {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  gap: 2rem;
+@media (max-width: 768px) {
+  .mega-div .container #savedcourses .saved-courses-info {
+    margin-left: -7rem;
+  }
 }
-.mega-div .container #savedcourses .course-items .course {
+@media (max-width: 500px) {
+  .mega-div .container #savedcourses .saved-courses-info {
+    margin-left: -11rem;
+  }
+}
+.mega-div .container #savedcourses .saved-courses-info .delete-all-form {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: max-content;
+}
+@media (max-width: 768px) {
+  .mega-div .container #savedcourses .saved-courses-info .delete-all-form {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+.mega-div .container #savedcourses .saved-courses-info .delete-all-form h2 {
+  font-weight: 900;
+  color: var(--color-gray-900);
+}
+.mega-div .container #savedcourses .saved-courses-info .delete-all-form button {
+  height: max-content;
+  color: red;
+  border: 1px solid red;
+  background-color: transparent;
+  padding: 0.5rem 1.5rem;
+  border-radius: 0.5rem;
+}
+.mega-div .container #savedcourses .saved-courses-info .delete-all-form button:hover {
+  background-color: var(--color-gray-900);
+  transition-duration: 0.2s;
+}
+.mega-div .container #savedcourses .saved-courses-info .course-items {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  margin-top: 2rem;
+}
+@media (max-width: 992px) {
+  .mega-div .container #savedcourses .saved-courses-info .course-items {
+    grid-template-columns: 1fr;
+  }
+}
+.mega-div .container #savedcourses .saved-courses-info .course-items .course {
   position: relative;
   display: block;
   border-radius: 8px;
   overflow: hidden;
   text-decoration: none;
-  box-shadow: 0 0 14px -4px var(--color-gray-500);
+  box-shadow: 0 0 14px -4px var(--color-gray-600);
   color: var(--color-gray-700);
 }
-.mega-div .container #savedcourses .course-items .course:hover {
+@media (max-width: 992px) {
+  .mega-div .container #savedcourses .saved-courses-info .course-items .course {
+    margin-bottom: 2rem;
+  }
+}
+.mega-div .container #savedcourses .saved-courses-info .course-items .course:hover {
   box-shadow: 0 0 14px -4px var(--color-gray-600);
 }
-.mega-div .container #savedcourses .course-items .course .bestseller {
+.mega-div .container #savedcourses .saved-courses-info .course-items .course .bestseller {
+  margin-top: 1.2rem;
   position: absolute;
   top: 1rem;
   left: 1rem;
@@ -1618,11 +1678,18 @@ header .container .account-buttons .btn-gray {
   padding: 4px 12px;
   border-radius: 4px;
 }
-.mega-div .container #savedcourses .course-items .course .bookmark {
+.mega-div .container #savedcourses .saved-courses-info .course-items .course .bookmark-container {
   position: absolute;
   top: 1rem;
   right: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.mega-div .container #savedcourses .saved-courses-info .course-items .course .bookmark-container .bookmark {
   z-index: 999;
+  margin-top: 1.2rem;
   border: none;
   border-radius: 50%;
   padding: 0.75rem 1rem;
@@ -1632,43 +1699,59 @@ header .container .account-buttons .btn-gray {
   color: var(--color-gray-900);
   align-items: center;
 }
-.mega-div .container #savedcourses .course-items .course .bookmark:hover {
-  background-color: var(--color-gray-900);
+.mega-div .container #savedcourses .saved-courses-info .course-items .course .bookmark-container .bookmark:hover {
+  color: #6366F1;
   transition: 0.3s ease-in-out;
 }
-.mega-div .container #savedcourses .course-items .course img {
+.mega-div .container #savedcourses .saved-courses-info .course-items .course .bookmark-container:hover span {
+  opacity: 1;
+  transition: 0.3s ease-in-out;
+}
+.mega-div .container #savedcourses .saved-courses-info .course-items .course .bookmark-container span {
+  top: -1.2rem;
+  position: absolute;
+  background-color: black;
+  color: white;
+  border: solid 1px darkgray;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  font-size: 12px;
+  margin-bottom: 0.3rem;
+  opacity: 0;
+}
+.mega-div .container #savedcourses .saved-courses-info .course-items .course img {
   width: 100%;
 }
-.mega-div .container #savedcourses .course-items .course .content {
+.mega-div .container #savedcourses .saved-courses-info .course-items .course .content {
   padding: 1rem 2rem;
 }
-.mega-div .container #savedcourses .course-items .course .content .title {
+.mega-div .container #savedcourses .saved-courses-info .course-items .course .content .title {
   font-size: 20px;
   margin: 0.5rem 0;
 }
-.mega-div .container #savedcourses .course-items .course .content .pricing {
+.mega-div .container #savedcourses .saved-courses-info .course-items .course .content .pricing {
   display: flex;
   gap: 1rem;
   font-size: 18px;
   font-weight: 600;
 }
-.mega-div .container #savedcourses .course-items .course .content .pricing .discount {
+.mega-div .container #savedcourses .saved-courses-info .course-items .course .content .pricing .discount {
   color: #EF4444;
   font-size: 18px;
   font-weight: 600;
 }
-.mega-div .container #savedcourses .course-items .course .content .pricing .original {
+.mega-div .container #savedcourses .saved-courses-info .course-items .course .content .pricing .original {
   color: #6366F1;
   font-size: 18px;
   font-weight: 600;
 }
-.mega-div .container #savedcourses .course-items .course .content .pricing .discount-enabled {
+.mega-div .container #savedcourses .saved-courses-info .course-items .course .content .pricing .discount-enabled {
   color: var(--color-gray-600);
   text-decoration: line-through;
   font-size: 18px;
   font-weight: 400;
 }
-.mega-div .container #savedcourses .course-items .course .footer {
+.mega-div .container #savedcourses .saved-courses-info .course-items .course .footer {
   color: var(--color-gray-600);
   border-top: 1px solid var(--color-gray-400);
   display: flex;
@@ -1676,11 +1759,15 @@ header .container .account-buttons .btn-gray {
   padding-top: 1rem;
   gap: 2rem;
 }
-.mega-div .container #savedcourses .course-items .course .footer .hours i {
+.mega-div .container #savedcourses .saved-courses-info .course-items .course .footer .hours i {
   margin-right: 5px;
 }
-.mega-div .container #savedcourses .course-items .course .footer .likes i {
+.mega-div .container #savedcourses .saved-courses-info .course-items .course .footer .likes i {
   margin-right: 5px;
+}
+.mega-div .container #savedcourses .saved-courses-info .no-courses h2 {
+  font-weight: 900;
+  color: var(--color-gray-900);
 }
 
 .courses {
@@ -1805,6 +1892,30 @@ header .container .account-buttons .btn-gray {
   grid-template-columns: 1fr 1fr 1fr;
   gap: 2rem;
 }
+@media (max-width: 992px) {
+  .courses .container .course-items {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+.courses .container .course-items .bookmark {
+  position: relative;
+  top: 3rem;
+  left: 85%;
+  z-index: 999;
+  border: none;
+  border-radius: 50%;
+  padding: 0.75rem 1rem;
+  display: flex;
+  justify-content: center;
+  background-color: var(--color-gray-000);
+  color: var(--color-gray-900);
+  align-items: center;
+}
+.courses .container .course-items .bookmark:hover {
+  background-color: var(--color-gray-900);
+  transition: 0.3s ease-in-out;
+  color: var(--color-gray-000);
+}
 .courses .container .course-items .course {
   position: relative;
   display: block;
@@ -1825,24 +1936,6 @@ header .container .account-buttons .btn-gray {
   color: #FFFFFF;
   padding: 4px 12px;
   border-radius: 4px;
-}
-.courses .container .course-items .course .bookmark {
-  position: absolute;
-  top: 1rem;
-  right: 1rem;
-  z-index: 999;
-  border: none;
-  border-radius: 50%;
-  padding: 0.75rem 1rem;
-  display: flex;
-  justify-content: center;
-  background-color: var(--color-gray-000);
-  color: var(--color-gray-900);
-  align-items: center;
-}
-.courses .container .course-items .course .bookmark:hover {
-  background-color: var(--color-gray-900);
-  transition: 0.3s ease-in-out;
 }
 .courses .container .course-items .course img {
   width: 100%;
@@ -2305,6 +2398,9 @@ header .container .account-buttons .btn-gray {
   width: 200px;
   height: 45px;
 }
+#subscribe .container form .status-message-error {
+  color: #EF4444;
+}
 
 footer {
   padding: 50px 0 30px 0;
@@ -2747,6 +2843,7 @@ body, html {
 }
 #contact .container .information .navigation span {
   letter-spacing: -5px;
+  color: var(--color-gray-600);
   margin-right: 0.2rem;
 }
 #contact .container .contact-us {

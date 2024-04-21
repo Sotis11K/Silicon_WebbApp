@@ -62,77 +62,66 @@
                 </div>
             </aside>
 
-            @if (!string.IsNullOrEmpty(ViewData["StatusMessage"]?.ToString()))
-            {
-                <div class="alert alert-danger">
-                    @ViewData["StatusMessage"]
+            <div class="saved-courses-info">
+
+
+                <div class="delete-all-form">
+                    <h2>Saved Items</h2>
+                    <button onclick="saveCourseDeleteAll()">Delete all</button>
                 </div>
-            }
-
-
-            <div class="delete-all-form">
-                <h2>Saved Items</h2>
-                <button onclick="saveCourseDeleteAll()">Delete all</button>
-            </div>
 
 
 
-            @if (Model != null && Model.Count > 0)
-            {
-                <div class="course-items">
+                @if (Model != null && Model.Count > 0)
+                {
+                    <div class="course-items">
 
-                    @foreach (var course in Model)
-                    {
-                        <div class="course" @*onclick="window.location.href='@Url.Action("SingleCourse", "Courses", new {id = @course.Id})'"*@>
+                        @foreach (var course in Model)
+                        {
+                            <div class="course" @*onclick="window.location.href='@Url.Action("SingleCourse", "Courses", new {id = @course.Id})'"*@>
 
-                            @if (course.IsBestSeller)
-                            {
-                                <div class="bestseller">Best Seller</div>
-                            }
-                            <button class="btn-circle bookmark" onclick="saveCourseDelete(@course.Id)"><i class="fa-regular fa-bookmark"></i></button>
-
-                            <img src="~/images/courses/@course.Image" alt="@course.Title" />
-                            <div class="content">
-                                <h5 class="title">@course.Title</h5>
-                                <p class="author">@course.Author</p>
-                                <div class="pricing">
-                                    @if (!string.IsNullOrEmpty(course.DiscountPrice))
-                                    {
-                                        <div class="discount">@course.DiscountPrice</div>
-                                    }
-                                    <div class="price @(!string.IsNullOrEmpty(course.DiscountPrice)? "discount-enabled" : "")">@course.Price</div>
+                                @if (course.IsBestSeller)
+                                {
+                                    <div class="bestseller">Best Seller</div>
+                                }
+                                <div class="bookmark-container">
+                                    <span>Remove</span>
+                                    <button class="btn-circle bookmark" onclick="saveCourseDelete(@course.Id)"><i class="fa-regular fa-bookmark"></i></button>
                                 </div>
-                                <div class="footer">
-                                    <div class="hours">
-                                        <i class="fa-regular fa-clock"></i> @course.Hours hours
+
+                                <img src="~/images/courses/@course.Image" alt="@course.Title" />
+                                <div class="content">
+                                    <h5 class="title">@course.Title</h5>
+                                    <p class="author">@course.Author</p>
+                                    <div class="pricing">
+                                        @if (!string.IsNullOrEmpty(course.DiscountPrice))
+                                        {
+                                            <div class="discount">@course.DiscountPrice</div>
+                                        }
+                                        <div class="price @(!string.IsNullOrEmpty(course.DiscountPrice)? "discount-enabled" : "")">@course.Price</div>
                                     </div>
-                                    <div class="likes">
-                                        <i class="fa-regular fa-thumbs-up"></i> @course.LikesInProcent (@course.LikesInNumbers)
+                                    <div class="footer">
+                                        <div class="hours">
+                                            <i class="fa-regular fa-clock"></i> @course.Hours hours
+                                        </div>
+                                        <div class="likes">
+                                            <i class="fa-regular fa-thumbs-up"></i> @course.LikesInProcent (@course.LikesInNumbers)
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    }
-                </div>
-            }
+                        }
+                    </div>
+                }
 
+                else
+                {
+                    <div class="no-courses">
+                        <h2>No saved courses were found.</h2>
+                    </div>
+                }
 
-
-
-
-
-
-            else
-            {
-                <p>No saved courses found.</p>
-            }
-
-
-
-
-
-
-
+            </div>
 
         </section>
     </div>

@@ -31,6 +31,39 @@ builder.Services.ConfigureApplicationCookie(x =>
     x.SlidingExpiration = true;
 });
 
+
+
+
+builder.Services.AddAuthentication().AddFacebook(x =>
+{
+    x.AppId = "394802060104809";
+    x.AppSecret = "c73ced261f72947126f1e036c3ee3f53";
+    x.Fields.Add("first_name");
+    x.Fields.Add("last_name");
+});
+
+
+builder.Services.AddAuthentication().AddGoogle(options =>
+{
+    options.ClientId = "950991653346-8agrslijabtv4ovo4tvtq1la0icp9rst.apps.googleusercontent.com";
+    options.ClientSecret = "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";
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 // Add the following line for ContactService registration
 builder.Services.AddScoped<IContactService, ContactServices>();
 

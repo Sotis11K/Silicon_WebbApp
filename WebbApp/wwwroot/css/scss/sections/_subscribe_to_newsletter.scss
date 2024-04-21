@@ -99,6 +99,9 @@
                     height: 45px;
                 }
             }
+            .status-message-error{
+                color: $danger;
+            }
         }
     }
 }

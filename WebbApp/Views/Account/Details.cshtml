@@ -15,13 +15,15 @@
                 </div>
             </aside>
 
-            @if (!string.IsNullOrEmpty(TempData["StatusMessage"]?.ToString()))
-            {
-                <div class="alert alert-danger">
-                    @TempData["StatusMessage"]
-                </div>
-            }
             <div class="details">
+            
+                @if (TempData["StatusMessage"] != null)
+                {
+                    <script>
+                        alert("@Html.Raw(TempData["StatusMessage"])");
+                    </script>
+                }
+
                 <section class="basic-info">
                     <form class="form-basic" method="post" asp-action="UpdateBasicInfo" asp-controller="Account" >
                         <h2>Account Details</h2>

@@ -4,6 +4,13 @@
     ViewData["Title"] = "Contact";
 }
 
+@if (TempData["StatusMessage"] != null)
+{
+    <script>
+        alert("@Html.Raw(TempData["StatusMessage"])");
+    </script>
+}
+
 <section id="contact">
 
     <div class="container">
@@ -11,8 +18,6 @@
         <div class="information">
             <div class="navigation">
                 <a asp-action="Home" asp-controller="Default"><i class="fa-solid fa-house"></i> Home</a>
-
-
                 <span>>></span>
                 <a asp-action="Contact" asp-controller="Contact">Contact</a>
             </div>

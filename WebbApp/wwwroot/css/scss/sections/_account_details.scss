@@ -102,6 +102,10 @@
                 margin-left: -9rem;
             }
 
+            .success{
+                background-color: $success;
+                border: 1px solid green;
+            }
 
             .basic-info {
 
@@ -178,6 +182,7 @@
 
                             textarea {
                                 background-color: var(--color-gray-000);
+                                color: var(--color-gray-900);
                             }
 
                             span {
