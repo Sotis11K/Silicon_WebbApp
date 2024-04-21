@@ -219,7 +219,6 @@ public class AccountController(UserManager<UserEntity> userManager, ApplicationC
                 TempData["StatusMessage"] = "User not found.";
             }
         }
-        // If we got this far, something failed, redisplay the form
         return RedirectToAction("Auth", "SignOut");
 
     }
