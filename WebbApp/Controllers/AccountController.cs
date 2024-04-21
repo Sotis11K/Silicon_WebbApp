@@ -174,14 +174,11 @@ public class AccountController(UserManager<UserEntity> userManager, ApplicationC
                 if (changePasswordResult.Succeeded)
                 {
                     TempData["StatusMessage"] = "Password changed successfully.";
-                    return RedirectToAction("Security");
+                    return View();
                 }
                 else
                 {
-                    foreach (var error in changePasswordResult.Errors)
-                    {
-                        ModelState.AddModelError(string.Empty, error.Description);
-                    }
+                    TempData["StatusMessage"] = "Something went wrong";
                 }
             }
             else
@@ -189,8 +186,7 @@ public class AccountController(UserManager<UserEntity> userManager, ApplicationC
                 TempData["StatusMessage"] = "User not found.";
             }
         }
-        // If we got this far, something failed, redisplay the form
-        return View("Security", model);
+        return View();
     }
 
 
@@ -223,7 +219,6 @@ public class AccountController(UserManager<UserEntity> userManager, ApplicationC
                 TempData["StatusMessage"] = "User not found.";
             }
         }
-        // If we got this far, something failed, redisplay the form
         return RedirectToAction("Auth", "SignOut");
 
     }
@@ -325,27 +320,21 @@ public class AccountController(UserManager<UserEntity> userManager, ApplicationC
     {
         try
         {
-            // Find the SavedCourseEntity with the given id
             var courseToDelete = await _context.SavedCourses.FirstOrDefaultAsync(c => c.CourseId == id);
 
             if (courseToDelete == null)
             {
-                // If the course with the given id doesn't exist, return a NotFound response
                 return NotFound("Course not found.");
             }
 
-            // Remove the course from the context
             _context.SavedCourses.Remove(courseToDelete);
 
-            // Save changes to the database
             await _context.SaveChangesAsync();
 
-            // Return a success response
             return Ok();
         }
         catch (Exception ex)
         {
-            // Handle exceptions if any
             return StatusCode(500, "An error occurred while deleting the course: " + ex.Message);
         }
     }
@@ -357,27 +346,21 @@ public class AccountController(UserManager<UserEntity> userManager, ApplicationC
     {
         try
         {
-            // Retrieve all saved courses from the database
             var allCourses = await _context.SavedCourses.ToListAsync();
 
             if (allCourses == null || allCourses.Count == 0)
             {
-                // If there are no saved courses, return a NotFound response
                 return NotFound("No saved courses found.");
             }
 
-            // Remove all saved courses from the context
             _context.SavedCourses.RemoveRange(allCourses);
 
-            // Save changes to the database
             await _context.SaveChangesAsync();
 
-            // Return a success response
             return Ok();
         }
         catch (Exception ex)
         {
-            // Handle exceptions if any
             return StatusCode(500, "An error occurred while deleting all saved courses: " + ex.Message);
         }
     }
@@ -385,8 +368,69 @@ public class AccountController(UserManager<UserEntity> userManager, ApplicationC
 
 
 
+    [HttpPost]
+    public async Task<IActionResult> JoinCourse(int id)
+    {
+        try
+        {
+            var user = await _userManager.GetUserAsync(User);
 
+            if (user == null)
+            {
+                return Unauthorized("User is not authenticated.");
+            }
 
+            var existingRegistration = await _context.RegisteredCourses.FirstOrDefaultAsync(rc => rc.CourseId == id && rc.UserId == user.Id);
+
+            if (existingRegistration != null)
+            {
+                return BadRequest("User is already registered for this course.");
+            }
+
+            var registration = new RegisteredCoursesEntity
+            {
+                CourseId = id,
+                UserId = user.Id 
+            };
+
+            _context.RegisteredCourses.Add(registration);
+
+            await _context.SaveChangesAsync();
+
+            return RedirectToAction("Index", "Courses");
+
+        }
+        catch (Exception ex)
+        {
+            return StatusCode(500, "An error occurred while registering for the course: " + ex.Message);
+        }
+    }
+
+    [HttpPost]
+    public async Task<IActionResult> UnregisterFromCourse(int id)
+    {
+        try
+        {
+            var nameIdentifier = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            var registeredCourse = await _context.RegisteredCourses.FirstOrDefaultAsync(c => c.CourseId == id && c.UserId == nameIdentifier);
+
+            if (registeredCourse == null)
+            {
+                return NotFound("User is not registered for the course.");
+            }
+
+            _context.RegisteredCourses.Remove(registeredCourse);
+
+            await _context.SaveChangesAsync();
+
+            return RedirectToAction("Index", "Courses");
+
+        }
+        catch (Exception ex)
+        {
+            return StatusCode(500, "An error occurred while unregistering from the course: " + ex.Message);
+        }
+    }
 
 
 

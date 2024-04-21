@@ -4,7 +4,12 @@
 }
 
 
-
+@if (TempData["StatusMessage"] != null)
+{
+    <script>
+        alert("@Html.Raw(TempData["StatusMessage"])");
+    </script>
+}
 
 
 <section id="single-course">
@@ -118,7 +123,14 @@
                     <span class="price">@Model.Price</span>
                 }
 
-                <button class="btn-theme">Join course</button>
+                <form method="post" asp-controller="Account" asp-action="JoinCourse">
+                    <button class="btn-theme" type="submit">Join course</button>
+                </form>
+
+                <form method="post" asp-controller="Account" asp-action="UnregisterFromCourse">
+                    <button class="btn-theme" type="submit">Unregister from course</button>
+                </form>
+
 
             </div>
         </div>

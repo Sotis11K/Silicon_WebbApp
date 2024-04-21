@@ -132,7 +132,30 @@
             grid-template-columns: 1fr 1fr 1fr;
             gap: 2rem;
 
+            @include lg {
+                grid-template-columns: 1fr 1fr;
+            }
 
+            .bookmark {
+                position: relative;
+                top: 3rem;
+                left: 85%;
+                z-index: 999;
+                border: none;
+                border-radius: 50%;
+                padding: 0.75rem 1rem;
+                display: flex;
+                justify-content: center;
+                background-color: var(--color-gray-000);
+                color: var(--color-gray-900);
+                align-items: center;
+
+                &:hover {
+                    background-color: var(--color-gray-900);
+                    transition: 0.3s ease-in-out;
+                    color: var(--color-gray-000);
+                }
+            }
 
             .course {
                 position: relative;
@@ -158,25 +181,7 @@
                     border-radius: 4px;
                 }
 
-                .bookmark {
-                    position: absolute;
-                    top: 1rem;
-                    right: 1rem;
-                    z-index: 999;
-                    border: none;
-                    border-radius: 50%;
-                    padding: 0.75rem 1rem;
-                    display: flex;
-                    justify-content: center;
-                    background-color: var(--color-gray-000);
-                    color: var(--color-gray-900);
-                    align-items: center;
 
-                    &:hover {
-                        background-color: var(--color-gray-900);
-                        transition: 0.3s ease-in-out;
-                    }
-                }
 
                 img {
                     width: 100%;

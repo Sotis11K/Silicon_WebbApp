@@ -35,7 +35,12 @@
 
 }
 
- 
+@if (TempData["StatusMessage"] != null)
+{
+    <script>
+        alert("@Html.Raw(TempData["StatusMessage"])");
+    </script>
+}
 
 
 <div class="mega-div">
@@ -75,7 +80,7 @@
             <div class="security-information">
 
 
-            <form class="security-form" method="post" asp-action="ChangePassword" asp-controller="Account">
+            <form class="security-form" method="post" asp-action="Security" asp-controller="Account">
                 <h2>Security</h2>
                 <span>Password</span>
                 <div class="input-group">

@@ -6,18 +6,15 @@
 <section id="signin">
     <div class="container">
 
-
-        @if(!string.IsNullOrEmpty(ViewData["StatusMessage"]?.ToString()))
-        {
-            <div class="alert alert-danger">
-                @ViewData["StatusMessage"]
-            </div>
-        }
-
-
         <form method="post" asp-action="SignIn" asp-controller="Auth" asp-route-ReturnUrl="@ViewData["ReturnUrl"]" novalidate>
             <h1>Welcome Back</h1>
             <p>Don't have an account yet? <a asp-controller="Auth" asp-action="SignUp">Sign up here</a></p>
+            @if (!string.IsNullOrEmpty(ViewData["StatusMessage"]?.ToString()))
+            {
+                <div class="alert alert-danger">
+                    @ViewData["StatusMessage"]
+                </div>
+            }
             <div class="content">
                 <div id="form-email" class="input-group">
                     <label asp-for="Email"></label>
@@ -44,8 +41,8 @@
                 <hr>
 
                 <div id="external-signin">
-                    <a class="btn-gray"><i class="fa-brands fa-google"></i>Google</a>
-                    <a class="btn-gray"><i class="fa-brands fa-facebook-f"></i>Facebook</a>
+                    <a asp-action="Google" asp-controller="Auth" class="btn-gray"><i class="fa-brands fa-google"></i>Google</a>
+                    <a asp-action="Facebook" asp-controller="Auth" class="btn-gray"><i class="fa-brands fa-facebook-f"></i>Facebook</a>
                 </div>
 
             </div>

@@ -10,6 +10,8 @@ public class ApplicationContext(DbContextOptions<ApplicationContext> options) : 
     public DbSet<ContactEntity> Contacts { get; set; }
     public DbSet<SavedCourseEntity> SavedCourses { get; set; }
     public DbSet<CourseEntity> Courses { get; set; }
+    public DbSet<RegisteredCoursesEntity> RegisteredCourses { get; set; }
+
 
 
 

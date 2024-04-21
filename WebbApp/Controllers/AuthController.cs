@@ -3,6 +3,7 @@ using Infrastructure.Entities;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System.Security.Claims;
 using WebbApp.ViewModels;
 
 namespace WebbApp.Controllers
@@ -16,7 +17,7 @@ namespace WebbApp.Controllers
         private readonly ApplicationContext _context = context;
 
 
-
+        #region Sign Up
         [Route("/signup")]
         public IActionResult SignUp()
         {
@@ -69,6 +70,10 @@ namespace WebbApp.Controllers
 
         }
 
+        #endregion
+
+
+        #region Sign In
         [Route("/signin")]
 
         public IActionResult SignIn(string returnUrl)
@@ -92,7 +97,9 @@ namespace WebbApp.Controllers
             ViewData["StatusMessage"] = "Incorrect email or password";
             return View(model);
         }
+        #endregion
 
+        #region Sign Out
         [Route("/signout")]
 
         public new async Task<IActionResult> SignOut()
@@ -100,5 +107,142 @@ namespace WebbApp.Controllers
             await _signInManager.SignOutAsync();
             return RedirectToAction("Home", "Default");
         }
+
+        #endregion
+
+
+        #region External Account Facebok
+
+        [HttpGet]
+
+        public IActionResult Facebook()
+        {
+            var authProps = _signInManager.ConfigureExternalAuthenticationProperties("Facebook", Url.Action("FacebookCallback"));
+            return new ChallengeResult("Facebook", authProps);
+        }
+
+
+
+
+
+        [HttpGet]
+        public async Task<IActionResult> FacebookCallback()
+        {
+            var info = await _signInManager.GetExternalLoginInfoAsync();
+            if (info != null)
+            {
+                // Create a new UserEntity using information from Facebook
+                var userEntity = new UserEntity
+                {
+                    FirstName = info.Principal.FindFirstValue(ClaimTypes.GivenName)!,
+                    LastName = info.Principal.FindFirstValue(ClaimTypes.Surname)!,
+                    Email = info.Principal.FindFirstValue(ClaimTypes.Email)!,
+                    UserName = info.Principal.FindFirstValue(ClaimTypes.Email)!,
+                };
+                var user = await _userManager.FindByEmailAsync(userEntity.Email);
+                if (user == null)
+                {
+                    var result = await _userManager.CreateAsync(userEntity);
+                    if (result.Succeeded)
+                    {
+                        user = await _userManager.FindByEmailAsync(userEntity.Email);
+                    }
+                }
+                if(user != null)
+                {
+                    if(user.FirstName != userEntity.FirstName || user.LastName != userEntity.LastName || user.Email != userEntity.Email)
+                    {
+                        user.FirstName = userEntity.FirstName;
+                        user.LastName = userEntity.LastName;
+                        user.Email = userEntity.Email;
+
+
+
+                        await _userManager.UpdateAsync(user);
+                    }
+
+                    await _signInManager.SignInAsync(user, isPersistent: false);
+
+                    if(HttpContext.User != null)
+                    {
+                        return RedirectToAction("Details", "Account");
+                    }
+                }
+            }
+            return RedirectToAction("SignIn", "Auth");
+        }
+
+        #endregion
+
+
+        #region External Account Google
+
+        [HttpGet]
+        public IActionResult Google()
+        {
+            var authProps = _signInManager.ConfigureExternalAuthenticationProperties("Google", Url.Action("GoogleCallback"));
+            return new ChallengeResult("Google", authProps);
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> GoogleCallback()
+        {
+            var info = await _signInManager.GetExternalLoginInfoAsync();
+            if (info != null)
+            {
+                // Retrieve user information from the external login provider
+                var firstName = info.Principal.FindFirstValue(ClaimTypes.GivenName);
+                var lastName = info.Principal.FindFirstValue(ClaimTypes.Surname);
+                var email = info.Principal.FindFirstValue(ClaimTypes.Email);
+
+                // Check if a user with the same email already exists in the database
+                var existingUser = await _userManager.FindByEmailAsync(email);
+                if (existingUser == null)
+                {
+                    // If the user doesn't exist, create a new user entity
+                    var newUser = new UserEntity
+                    {
+                        FirstName = firstName,
+                        LastName = lastName,
+                        Email = email,
+                        UserName = email,
+                    };
+
+                    // Attempt to create the user in the database
+                    var createUserResult = await _userManager.CreateAsync(newUser);
+                    if (createUserResult.Succeeded)
+                    {
+                        // If user creation is successful, sign in the user
+                        await _signInManager.SignInAsync(newUser, isPersistent: false);
+                    }
+                    else
+                    {
+                        // Handle the case where user creation fails
+                        ViewData["ErrorMessage"] = "Failed to create user account.";
+                        return View("Error");
+                    }
+                }
+                else
+                {
+                    // If the user already exists, sign in the existing user
+                    await _signInManager.SignInAsync(existingUser, isPersistent: false);
+                }
+            }
+            else
+            {
+                // Handle the case where external login information is not available
+                ViewData["ErrorMessage"] = "External login information not available.";
+                return View("Error");
+            }
+
+            // Redirect to a suitable action after successful authentication
+            return RedirectToAction("Details", "Account");
+        }
+
+
+
+        #endregion
+
+
     }
 }
