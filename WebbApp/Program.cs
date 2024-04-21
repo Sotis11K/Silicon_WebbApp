@@ -33,7 +33,7 @@ builder.Services.ConfigureApplicationCookie(x =>
 
 
 
-
+/*
 builder.Services.AddAuthentication().AddFacebook(x =>
 {
     x.AppId = "394802060104809";
@@ -49,7 +49,7 @@ builder.Services.AddAuthentication().AddGoogle(options =>
     options.ClientSecret = "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";
 });
 
-
+*/
 
 
 
