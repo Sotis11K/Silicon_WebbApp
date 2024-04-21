@@ -17,7 +17,7 @@
 <header class="@(changeBackground ? "contact-background" : "")">
     <div class="container">
        <a id="logo" asp-action="Home" asp-controller="Default">
-            <img src="images/logos/@(isDark ? " silicon_logo1_dark.svg" : "silicon_logo1_light.svg")" />
+            <img src="~/images/logos/@(isDark ? "silicon_logo1_dark.svg" : "silicon_logo1_light.svg")" />
        </a>
 
        <nav>
@@ -45,7 +45,7 @@
             <div class="profile">
                 <div class="profile-image">
                     <a asp-action="Details" asp-controller="Account">
-                        <img src="~/images/uploads/profiles/@user!.ProfileImage"/>
+                        <img src="~/images/uploads/profiles/@user?.ProfileImage"/>
                     </a>
                 </div>
             </div>

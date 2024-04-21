@@ -35,93 +35,95 @@
 
 }
 
+ 
+
+
+<div class="mega-div">
+    <div class="container">
+        <section id="security">
+            <aside>
+                <div class="profile-info">
+                    <img id="testing-img" src="~/images/uploads/profiles/@user.ProfileImage" alt="@user.FirstName @user.LastName" />
+
+                    <form id="change-img" enctype="multipart/form-data" method="post" asp-action="UploadProfileImage" asp-controller="Account">
+                        <input id="fileUploader" type="file" name="file" hidden />
+                        <label for="fileUploader" class="btn btn-circle btn-circle-sm">Change Profile Picture</label>
+                    </form>
 
 
 
-
-<div class="container">
-    <section id="security">
-        <aside>
-            <div class="profile-info">
-                <img id="testing-img" src="~/images/uploads/profiles/@user.ProfileImage" alt="@user.FirstName @user.LastName" />
-
-                <form id="change-img" enctype="multipart/form-data" method="post" asp-action="UploadProfileImage" asp-controller="Account">
-                    <input id="fileUploader" type="file" name="file" hidden />
-                    <label for="fileUploader" class="btn btn-circle btn-circle-sm">Change Profile Picture</label>
-                </form>
+                    <h2>@($"{user.FirstName} {user.LastName}")</h2>
+                    <h5>@user.Email</h5>
 
 
-
-                <h5>@($"{user.FirstName} {user.LastName}")</h5>
-                <h5>@user.FirstName</h5>
-
-
-                <nav>
-                    <a class="@(accountDetailsActive ? "btn-theme-s" : "")" asp-action="Details" asp-controller="Account"><i class="fa-solid fa-gear"></i>Account Details</a>
-                    <a class="@(accountSecurityActive ? "btn-theme-s" : "")" asp-action="Security" asp-controller="Account"><i class="fa-regular fa-lock"></i>Account Security</a>
-                    <a class="@(accountSavedCoursesActive ? "btn-theme-s" : "")" asp-action="SavedCoursesContent" asp-controller="Account"><i class="fa-regular fa-bookmark"></i>Saved Courses</a>
-                    <a class="details-btn" asp-action="signout" asp-controller="Auth"><i class="fa-solid fa-arrow-right-from-bracket"></i>Sign Out</a>
-                </nav>
-            </div>
-        </aside>
-
-        @if (!string.IsNullOrEmpty(ViewData["StatusMessage"]?.ToString()))
-        {
-            <div class="alert alert-danger">
-                @ViewData["StatusMessage"]
-            </div>
-        }
-
-        <div class="security-information">
-
-
-        <form class="security-form" method="post" asp-action="ChangePassword" asp-controller="Account">
-            <h2>Security</h2>
-            <span>Password</span>
-            <div class="input-group">
-                <label for="currentPassword">Current Password</label>
-                <input type="password" id="currentPassword" name="CurrentPassword" required>
-                <span asp-validation-for="CurrentPassword" class="text-danger"></span>
-            </div>
-
-            <div class="updated-password">
-
-                <div class="input-group">
-                    <label for="newPassword">New Password</label>
-                    <input type="password" id="newPassword" name="NewPassword" required>
-                    <span asp-validation-for="NewPassword" class="text-danger"></span>
+                    <nav>
+                        <a class="@(accountDetailsActive ? "active" : "")" asp-action="Details" asp-controller="Account"><i class="fa-solid fa-gear"></i>Account Details</a>
+                        <a class="@(accountSecurityActive ? "active" : "")" asp-action="Security" asp-controller="Account"><i class="fa-regular fa-lock"></i>Account Security</a>
+                        <a class="@(accountSavedCoursesActive ? "active" : "")" asp-action="SavedCoursesContent" asp-controller="Account"><i class="fa-regular fa-bookmark"></i>Saved Courses</a>
+                        <a class="details-btn" asp-action="signout" asp-controller="Auth"><i class="fa-solid fa-arrow-right-from-bracket"></i>Sign Out</a>
+                    </nav>
                 </div>
+            </aside>
+
+            @if (!string.IsNullOrEmpty(ViewData["StatusMessage"]?.ToString()))
+            {
+                <div class="alert alert-danger">
+                    @ViewData["StatusMessage"]
+                </div>
+            }
+
+            <div class="security-information">
+
+
+            <form class="security-form" method="post" asp-action="ChangePassword" asp-controller="Account">
+                <h2>Security</h2>
+                <span>Password</span>
                 <div class="input-group">
-                    <label for="confirmPassword">Confirm New Password</label>
-                    <input type="password" id="confirmPassword" name="ConfirmPassword" required>
-                    <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+                    <label for="currentPassword">Current Password</label>
+                    <input type="password" id="currentPassword" name="CurrentPassword" required placeholder="********">
+                    <span asp-validation-for="CurrentPassword" class="text-danger"></span>
                 </div>
 
+                <div class="updated-password">
+
+                    <div class="input-group">
+                        <label for="newPassword">New Password</label>
+                            <input type="password" id="newPassword" name="NewPassword" required placeholder="********">
+                        <span asp-validation-for="NewPassword" class="text-danger"></span>
+                    </div>
+                    <div class="input-group">
+                        <label for="confirmPassword">Confirm New Password</label>
+                            <input type="password" id="confirmPassword" name="ConfirmPassword" required placeholder="********">
+                        <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+                    </div>
+
+                </div>
+
+                <div class="security-buttons">
+                    <button type="reset" class="btn-cancel">Cancel</button>
+                    <button type="submit" class="btn-theme">Change Password</button>
+                </div>
+            </form>
+
+
+
+            <form class="delete-form" method="POST" asp-controller="Account" asp-action="DeleteAccount" class="delete-account">
+                <span>Delete account</span>
+                <p>When you delete your account, your public profile will be deactivated immediately. If you change your mind before the 14 days are up, sign in with your email and password, and we’ll send you a link to reactivate your account.</p>
+                <div class="checkbox-group">
+                    <input type="checkbox" required />
+                    <label>Yes, I want to delete my account.</label>
+                </div>
+                <button>Delete</button>
+            </form>
+
+
             </div>
 
-            <div class="security-buttons">
-                <button type="reset" class="btn-cancel">Cancel</button>
-                <button type="submit" class="btn-theme">Change Password</button>
-            </div>
-        </form>
+
+        </section>
+    </div>
 
 
-
-        <form class="delete-form" method="POST" asp-controller="Account" asp-action="DeleteAccout" class="delete-account">
-            <span>Delete account</span>
-            <p>When you delete your account, your public profile will be deactivated immediately. If you change your mind before the 14 days are up, sign in with your email and password, and we’ll send you a link to reactivate your account.</p>
-            <div class="checkbox-group">
-                <input type="checkbox" />
-                <label>Yes, I want to delete my account.</label>
-            </div>
-            <button>Delete</button>
-        </form>
-
-
-        </div>
-
-
-    </section>
 </div>
-
 

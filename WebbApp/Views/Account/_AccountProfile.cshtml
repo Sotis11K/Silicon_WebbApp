@@ -43,9 +43,9 @@
     <h5>@($"{Model.BasicInfo.FirstName} {Model.BasicInfo.LastName}")</h5>
     <p>@Model.BasicInfo.Email</p>
     <nav>
-        <a class="@(accountDetailsActive ? "btn-theme-s" : "")" asp-action="Details" asp-controller="Account"><i class="fa-solid fa-gear"></i>Account Details</a>
-        <a class="@(accountSecurityActive ? "btn-theme-s" : "")" asp-action="Security" asp-controller="Account"><i class="fa-regular fa-lock"></i>Account Security</a>
-        <a class="@(accountSavedCoursesActive ? "btn-theme-s" : "")" asp-action="SavedCoursesContent" asp-controller="Account"><i class="fa-regular fa-bookmark"></i>Saved Courses</a>
+        <a class="@(accountDetailsActive ? "active" : "")" asp-action="Details" asp-controller="Account"><i class="fa-solid fa-gear"></i>Account Details</a>
+        <a class="@(accountSecurityActive ? "active" : "")" asp-action="Security" asp-controller="Account"><i class="fa-regular fa-lock"></i>Account Security</a>
+        <a class="@(accountSavedCoursesActive ? "active" : "")" asp-action="SavedCoursesContent" asp-controller="Account"><i class="fa-regular fa-bookmark"></i>Saved Courses</a>
         <a class="details-btn" asp-action="signout" asp-controller="Auth"><i class="fa-solid fa-arrow-right-from-bracket"></i>Sign Out</a>
     </nav>
 

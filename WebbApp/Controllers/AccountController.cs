@@ -194,6 +194,42 @@ public class AccountController(UserManager<UserEntity> userManager, ApplicationC
     }
 
 
+
+    [HttpPost]
+    public async Task<IActionResult> DeleteAccount()
+    {
+        if (ModelState.IsValid)
+        {
+
+            var user = await _userManager.GetUserAsync(User);
+            if (user != null)
+            {
+                var deleteUser = await _userManager.DeleteAsync(user);
+                if (deleteUser.Succeeded)
+                {
+                    TempData["StatusMessage"] = "User successfully removed";
+                    return RedirectToAction("SignOut", "Auth");
+                }
+                else
+                {
+                    foreach (var error in deleteUser.Errors)
+                    {
+                        ModelState.AddModelError(string.Empty, error.Description);
+                    }
+                }
+            }
+            else
+            {
+                TempData["StatusMessage"] = "User not found.";
+            }
+        }
+        // If we got this far, something failed, redisplay the form
+        return RedirectToAction("Auth", "SignOut");
+
+    }
+
+
+
     private bool ValidateAddressInfo(AccountAddressInfo addressInfo)
     {
         if (addressInfo == null)
@@ -240,6 +276,15 @@ public class AccountController(UserManager<UserEntity> userManager, ApplicationC
         // Pass the saved courses to the view
         return View(savedCourses);
     }
+
+
+
+
+
+
+   
+
+
 }
 
 

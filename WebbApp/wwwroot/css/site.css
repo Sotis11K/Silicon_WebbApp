@@ -1065,137 +1065,233 @@ header .container .account-buttons .btn-gray {
   color: var(--color-gray-000);
 }
 
-#account-details {
+.mega-div #account-details {
   display: grid;
   grid-template-columns: 2fr 5fr;
   gap: 150px;
   margin-bottom: 70px;
 }
-#account-details aside {
+.mega-div #account-details aside {
   border-right: 1px solid var(--color-gray-300);
   padding-right: 20px;
 }
-#account-details aside .profile-info {
+.mega-div #account-details aside .profile-info {
   margin: 20px;
   text-align: center;
-  background-color: aqua;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
-#account-details aside .profile-info h5 {
+.mega-div #account-details aside .profile-info h5 {
   margin-top: 15px;
   margin-bottom: 0;
 }
-#account-details aside .profile-info p {
+.mega-div #account-details aside .profile-info p {
   line-height: 160%;
   font-weight: 400;
   color: #565973;
   font-family: "Manrope", sans-serif;
   font-size: 16px !important;
+  color: var(--color-gray-900);
 }
-#account-details aside .profile-info img {
+.mega-div #account-details aside .profile-info img {
   width: 120px;
   height: 120px;
   border-radius: 50%;
 }
-#account-details aside .profile-info #change-img {
-  background-color: red;
+.mega-div #account-details aside .profile-info #change-img {
   width: max-content;
+  background-color: var(--color-gray-600);
+  margin-top: 1rem;
+  box-shadow: 0 0 8px -3px var(--color-gray-900);
+  border-radius: 0.25rem;
+  margin-bottom: 1rem;
 }
-#account-details aside nav {
-  margin-top: 50px;
+.mega-div #account-details aside .profile-info #change-img label {
+  color: var(--color-gray-000);
+}
+.mega-div #account-details aside .profile-info h2 {
+  font-weight: 900;
+  color: var(--color-gray-800);
+}
+.mega-div #account-details aside .profile-info h5 {
+  color: var(--color-gray-800);
+}
+.mega-div #account-details aside nav {
+  margin-top: 2rem;
   text-align: left;
   display: flex;
   flex-direction: column;
   gap: 0.25rem;
 }
-#account-details aside nav a {
+.mega-div #account-details aside nav a {
   text-align: left;
   justify-content: flex-start;
   font-weight: 700;
+  text-decoration: none;
+  text-align: left;
+  padding: 0.5rem 2rem;
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
   color: var(--color-gray-900);
 }
-#account-details .details {
+.mega-div #account-details aside nav a:hover {
+  text-decoration: underline;
+}
+.mega-div #account-details aside nav .active {
+  background-color: #6366F1;
+  border-radius: 0.5rem;
+  box-shadow: 0 0 8px -4px #6366F1;
+  color: white;
+}
+.mega-div #account-details aside nav .active:hover {
+  background-color: var(--color-gray-700);
+}
+.mega-div #account-details .details {
   margin-top: 50px;
   width: 100%;
 }
-#account-details .details .basic-info form {
+@media (max-width: 992px) {
+  .mega-div #account-details .details {
+    margin-left: -9rem;
+  }
+}
+.mega-div #account-details .details .basic-info form {
   padding: 1rem;
 }
-#account-details .details .basic-info form h5 {
+.mega-div #account-details .details .basic-info form h2 {
+  color: var(--color-gray-900);
+}
+.mega-div #account-details .details .basic-info form h5 {
   color: var(--color-theme);
 }
-#account-details .details .basic-info form .content {
+.mega-div #account-details .details .basic-info form .content {
   display: grid;
   gap: 1rem 2rem;
   grid-template-columns: 1fr fr;
   grid-template-areas: "firstname lastname" "email phone" "bio bio" "buttons buttons";
 }
-#account-details .details .basic-info form .content #form-firstname {
+@media (max-width: 768px) {
+  .mega-div #account-details .details .basic-info form .content {
+    display: flex;
+    flex-direction: column;
+  }
+}
+.mega-div #account-details .details .basic-info form .content #form-firstname {
   grid-area: firstname;
+  color: var(--color-gray-900);
 }
-#account-details .details .basic-info form .content #form-lastname {
+.mega-div #account-details .details .basic-info form .content #form-firstname input {
+  background-color: var(--color-gray-000);
+  color: var(--color-gray-900);
+}
+.mega-div #account-details .details .basic-info form .content #form-lastname {
   grid-area: lastname;
+  color: var(--color-gray-900);
 }
-#account-details .details .basic-info form .content #form-email {
+.mega-div #account-details .details .basic-info form .content #form-lastname input {
+  background-color: var(--color-gray-000);
+  color: var(--color-gray-900);
+}
+.mega-div #account-details .details .basic-info form .content #form-email {
   grid-area: email;
+  color: var(--color-gray-900);
 }
-#account-details .details .basic-info form .content #form-phone {
+.mega-div #account-details .details .basic-info form .content #form-email input {
+  background-color: var(--color-gray-000);
+  color: var(--color-gray-900);
+}
+.mega-div #account-details .details .basic-info form .content #form-phone {
   grid-area: phone;
+  color: var(--color-gray-900);
 }
-#account-details .details .basic-info form .content #form-bio {
+.mega-div #account-details .details .basic-info form .content #form-phone input {
+  background-color: var(--color-gray-000);
+  color: var(--color-gray-900);
+}
+.mega-div #account-details .details .basic-info form .content #form-bio {
   grid-area: bio;
+  color: var(--color-gray-900);
 }
-#account-details .details .basic-info form .content #form-bio span {
+.mega-div #account-details .details .basic-info form .content #form-bio textarea {
+  background-color: var(--color-gray-000);
+}
+.mega-div #account-details .details .basic-info form .content #form-bio span {
   color: var(--color-gray-500);
   font-weight: 400;
 }
-#account-details .details .basic-info form .content .form-buttons {
+.mega-div #account-details .details .basic-info form .content .form-buttons {
   grid-area: buttons;
   margin: 20px 0;
   display: flex;
   gap: 20px;
 }
-#account-details .details .address-info {
+.mega-div #account-details .details .address-info {
   margin-top: 30px;
 }
-#account-details .details .address-info form {
+.mega-div #account-details .details .address-info form {
   padding: 1rem;
 }
-#account-details .details .address-info form h5 {
+.mega-div #account-details .details .address-info form h5 {
   color: #6366F1;
 }
-#account-details .details .address-info form .content {
+.mega-div #account-details .details .address-info form .content {
   display: grid;
   gap: 1rem 2rem;
   grid-auto-columns: 1fr 1fr;
   grid-template-areas: "addressline_1 addressline_1" "addressline_2 addressline_2" "postalcode city" "buttons buttons";
+  color: var(--color-gray-900);
 }
-#account-details .details .address-info form .content #form-addressline-1 {
+@media (max-width: 768px) {
+  .mega-div #account-details .details .address-info form .content {
+    display: flex;
+    flex-direction: column;
+  }
+}
+.mega-div #account-details .details .address-info form .content #form-addressline-1 {
   grid-area: addressline_1;
 }
-#account-details .details .address-info form .content #form-addressline-2 {
+.mega-div #account-details .details .address-info form .content #form-addressline-1 input {
+  background-color: var(--color-gray-000);
+  color: var(--color-gray-900);
+}
+.mega-div #account-details .details .address-info form .content #form-addressline-2 {
   grid-area: addressline_2;
 }
-#account-details .details .address-info form .content #form-addressline-2 span {
+.mega-div #account-details .details .address-info form .content #form-addressline-2 input {
+  background-color: var(--color-gray-000);
+  color: var(--color-gray-900);
+}
+.mega-div #account-details .details .address-info form .content #form-addressline-2 span {
   color: var(--color-gray-500);
   font-weight: 400;
 }
-#account-details .details .address-info form .content #form-postalcode {
+.mega-div #account-details .details .address-info form .content #form-postalcode {
   grid-area: postalcode;
 }
-#account-details .details .address-info form .content #form-city {
+.mega-div #account-details .details .address-info form .content #form-postalcode input {
+  background-color: var(--color-gray-000);
+  color: var(--color-gray-900);
+}
+.mega-div #account-details .details .address-info form .content #form-city {
   grid-area: city;
 }
-#account-details .details .address-info form .content .form-buttons {
+.mega-div #account-details .details .address-info form .content #form-city input {
+  background-color: var(--color-gray-000);
+  color: var(--color-gray-900);
+}
+.mega-div #account-details .details .address-info form .content .form-buttons {
   grid-area: buttons;
   margin: 20px 0;
   display: flex;
   gap: 20px;
 }
 
-#security {
+.mega-div {
+  background-color: var(--color-gray-000);
+}
+.mega-div #security {
   display: grid;
   grid-template-columns: 2fr 5fr;
   gap: 150px;
@@ -1203,95 +1299,217 @@ header .container .account-buttons .btn-gray {
   margin-top: 50px;
   width: 100%;
 }
-#security aside {
+.mega-div #security aside {
   border-right: 1px solid var(--color-gray-300);
   padding-right: 20px;
-  background-color: yellow;
+  height: max-content;
 }
-#security aside .profile-info {
+.mega-div #security aside .profile-info {
   margin: 20px;
   text-align: center;
-  background-color: aqua;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
-#security aside .profile-info h5 {
-  margin-top: 15px;
-  margin-bottom: 0;
-}
-#security aside .profile-info p {
+.mega-div #security aside .profile-info p {
   line-height: 160%;
   font-weight: 400;
   color: #565973;
   font-family: "Manrope", sans-serif;
   font-size: 16px !important;
 }
-#security aside .profile-info img {
+.mega-div #security aside .profile-info img {
   width: 120px;
   height: 120px;
   border-radius: 50%;
 }
-#security aside .profile-info #change-img {
-  background-color: red;
+.mega-div #security aside .profile-info #change-img {
   width: max-content;
+  background-color: var(--color-gray-600);
+  margin-top: 1rem;
+  box-shadow: 0 0 8px -3px var(--color-gray-900);
+  border-radius: 0.25rem;
+  margin-bottom: 1rem;
 }
-#security aside nav {
-  margin-top: 50px;
+.mega-div #security aside .profile-info #change-img label {
+  color: var(--color-gray-000);
+}
+.mega-div #security aside .profile-info h2 {
+  font-weight: 900;
+  color: var(--color-gray-900);
+}
+.mega-div #security aside .profile-info h5 {
+  margin-top: 0.75rem;
+  color: var(--color-gray-900);
+}
+.mega-div #security aside nav {
+  margin-top: 2rem;
   text-align: left;
   display: flex;
   flex-direction: column;
   gap: 0.25rem;
 }
-#security aside nav a {
+.mega-div #security aside nav a {
   text-align: left;
   justify-content: flex-start;
   font-weight: 700;
   color: var(--color-gray-900);
+  text-decoration: none;
+  text-align: left;
+  padding: 0.5rem 2rem;
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
 }
-#security .security-information .security-form {
+.mega-div #security aside nav a:hover {
+  text-decoration: underline;
+}
+.mega-div #security aside nav .active {
+  background-color: #6366F1;
+  border-radius: 0.5rem;
+  box-shadow: 0 0 8px -4px #6366F1;
+  color: white;
+}
+.mega-div #security aside nav .active:hover {
+  background-color: var(--color-gray-700);
+}
+@media (max-width: 992px) {
+  .mega-div #security .security-information {
+    margin-left: -8rem;
+  }
+}
+.mega-div #security .security-information .security-form {
   display: flex;
   flex-direction: column;
   gap: 1rem;
   width: max-content;
 }
-#security .security-information .security-form h2 {
+.mega-div #security .security-information .security-form h2 {
   font-weight: 800;
   color: var(--color-gray-900);
 }
-#security .security-information .security-form span {
+.mega-div #security .security-information .security-form span {
   color: #6366F1;
   font-weight: 600;
   font-size: 1.25rem;
 }
-#security .security-information .security-form .input-group {
+.mega-div #security .security-information .security-form .input-group {
   margin-bottom: 1rem;
 }
-#security .security-information .security-form .input-group label {
+.mega-div #security .security-information .security-form .input-group label {
   font-weight: bold;
   margin-bottom: 0.25rem;
+  color: var(--color-gray-900);
 }
-#security .security-information .security-form .input-group input {
+.mega-div #security .security-information .security-form .input-group input {
   width: 416px;
+  color: var(--color-gray-900);
+  background-color: var(--color-gray-000);
 }
-#security .security-information .security-form .updated-password {
+.mega-div #security .security-information .security-form .input-group input::placeholder {
+  color: var(--color-gray-900);
+}
+@media (max-width: 1400px) {
+  .mega-div #security .security-information .security-form .input-group input {
+    width: 350px;
+  }
+}
+@media (max-width: 768px) {
+  .mega-div #security .security-information .security-form .input-group input {
+    width: 80%;
+  }
+}
+.mega-div #security .security-information .security-form .input-group input::placeholder {
+  color: var(--color-gray-900);
+}
+.mega-div #security .security-information .security-form .updated-password {
   display: flex;
   gap: 2rem;
 }
-#security .security-information .security-form .security-buttons {
+@media (max-width: 1200px) {
+  .mega-div #security .security-information .security-form .updated-password {
+    flex-direction: column;
+    gap: 1rem;
+  }
+}
+.mega-div #security .security-information .security-form .security-buttons {
   display: flex;
   gap: 1.5rem;
 }
-#security .security-information .security-form .security-buttons button {
+.mega-div #security .security-information .security-form .security-buttons button {
   width: 20%;
   border-radius: 0.5rem;
 }
-#security .security-information .security-form .security-buttons .btn-cancel {
+@media (max-width: 1200px) {
+  .mega-div #security .security-information .security-form .security-buttons button {
+    width: 35%;
+  }
+}
+.mega-div #security .security-information .security-form .security-buttons .btn-cancel {
   background-color: var(--color-gray-300);
   border: none;
   outline: none;
   width: 15%;
+  color: var(--color-gray-900);
 }
+@media (max-width: 1200px) {
+  .mega-div #security .security-information .security-form .security-buttons .btn-cancel {
+    width: 30%;
+  }
+}
+.mega-div #security .security-information .delete-form {
+  margin-top: 3rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--color-gray-300);
+  width: max-content;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+@media (max-width: 1200px) {
+  .mega-div #security .security-information .delete-form {
+    width: 100%;
+  }
+}
+.mega-div #security .security-information .delete-form span {
+  color: #6366F1;
+  font-weight: 600;
+  font-size: 1.25rem;
+}
+.mega-div #security .security-information .delete-form p {
+  width: 820px;
+  color: var(--color-gray-900);
+}
+@media (max-width: 1400px) {
+  .mega-div #security .security-information .delete-form p {
+    width: 700px;
+  }
+}
+@media (max-width: 1200px) {
+  .mega-div #security .security-information .delete-form p {
+    width: 80%;
+  }
+}
+.mega-div #security .security-information .delete-form .checkbox-group {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.mega-div #security .security-information .delete-form .checkbox-group label {
+  color: var(--color-gray-900);
+}
+.mega-div #security .security-information .delete-form button {
+  margin-top: 2rem;
+  width: 11%;
+  border: none;
+  border-radius: 0.25rem;
+  padding: 0.75rem 3.5rem;
+  display: flex;
+  justify-content: center;
+  color: white;
+  background-color: red;
+}
+
 .courses {
   padding-top: 3rem;
   padding-bottom: 5rem;
