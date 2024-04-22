@@ -3041,6 +3041,11 @@ body, html {
   height: 100%;
 }
 
+#cookie-consent {
+  background-color: var(--color-gray-700);
+  color: var(--color-gray-000);
+}
+
 #error404 {
   display: flex;
   justify-content: center;
